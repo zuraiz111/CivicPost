@@ -7,30 +7,30 @@ const Dashboard = ({ language, onCategoryClick }) => {
       title: "Service Categories",
       subtitle: "What can we help you with today?",
       categories: [
-        { name: "Electricity", icon: "fa-bolt", color: "amber", desc: "Power outages, sparking, or billing issues" },
-        { name: "Stray Animal", icon: "fa-paw", color: "emerald", desc: "Report stray or abandoned animals in your area" },
-        { name: "Water Supply", icon: "fa-droplet", color: "blue", desc: "Leakages, low pressure, or contamination" },
-        { name: "Waste Management", icon: "fa-trash-can", color: "green", desc: "Garbage collection or illegal dumping" },
-        { name: "Roads & Infrastructure", icon: "fa-road", color: "slate", desc: "Potholes, street lights, or construction" },
-        { name: "Public Safety", icon: "fa-shield-heart", color: "rose", desc: "Security concerns or emergency hazards" },
-        { name: "Natural Gas", icon: "fa-fire-flame-simple", color: "orange", desc: "Gas leaks or low pressure reports" },
-        { name: "Public Relations", icon: "fa-bullhorn", color: "indigo", desc: "General inquiries, feedback, and city updates" },
-        { name: "Emergency Services", icon: "fa-truck-medical", color: "red", desc: "Urgent assistance and critical city incidents" }
+        { id: "Electricity", name: "Electricity", icon: "fa-bolt", color: "amber", desc: "Power outages, sparking, or billing issues" },
+        { id: "Stray Animal", name: "Stray Animal", icon: "fa-paw", color: "emerald", desc: "Report stray or abandoned animals in your area" },
+        { id: "Water Supply", name: "Water Supply", icon: "fa-droplet", color: "blue", desc: "Leakages, low pressure, or contamination" },
+        { id: "Waste Management", name: "Waste Management", icon: "fa-trash-can", color: "green", desc: "Garbage collection or illegal dumping" },
+        { id: "Roads & Infrastructure", name: "Roads & Infrastructure", icon: "fa-road", color: "slate", desc: "Potholes, street lights, or construction" },
+        { id: "Public Safety", name: "Public Safety", icon: "fa-shield-heart", color: "rose", desc: "Security concerns or emergency hazards" },
+        { id: "Natural Gas", name: "Natural Gas", icon: "fa-fire-flame-simple", color: "orange", desc: "Gas leaks or low pressure reports" },
+        { id: "Public Relations", name: "Public Relations", icon: "fa-bullhorn", color: "indigo", desc: "General inquiries, feedback, and city updates" },
+        { id: "Emergency Services", name: "Emergency Services", icon: "fa-truck-medical", color: "red", desc: "Urgent assistance and critical city incidents" }
       ]
     },
     ur: {
       title: "سروس کے زمرے",
       subtitle: "آج ہم آپ کی کیا مدد کر سکتے ہیں؟",
       categories: [
-        { name: "بجلی", icon: "fa-bolt", color: "amber", desc: "بجلی کی بندش، سپارکنگ یا بلنگ کے مسائل" },
-        { name: "آوارہ جانور", icon: "fa-paw", color: "emerald", desc: "اپنے علاقے میں آوارہ یا لاوارث جانوروں کی اطلاع دیں" },
-        { name: "پانی کی فراہمی", icon: "fa-droplet", color: "blue", desc: "لیکیج، کم دباؤ یا آلودگی" },
-        { name: "فضلے کا انتظام", icon: "fa-trash-can", color: "green", desc: "کچرا اٹھانا یا غیر قانونی ڈمپنگ" },
-        { name: "سڑکیں اور انفراسٹرکچر", icon: "fa-road", color: "slate", desc: "گڑھے، اسٹریٹ لائٹس یا تعمیرات" },
-        { name: "عوامی تحفظ", icon: "fa-shield-heart", color: "rose", desc: "سیکیورٹی خدشات یا ہنگامی خطرات" },
-        { name: "قدرتی گیس", icon: "fa-fire-flame-simple", color: "orange", desc: "گیس لیک یا کم پریشر کی رپورٹ" },
-        { name: "عوامی تعلقات", icon: "fa-bullhorn", color: "indigo", desc: "عام پوچھ گچھ، فیڈ بیک اور شہر کی اپ ڈیٹس" },
-        { name: "ہنگامی خدمات", icon: "fa-truck-medical", color: "red", desc: "فوری امداد اور اہم شہر کے واقعات" }
+        { id: "Electricity", name: "بجلی", icon: "fa-bolt", color: "amber", desc: "بجلی کی بندش، سپارکنگ یا بلنگ کے مسائل" },
+        { id: "Stray Animal", name: "آوارہ جانور", icon: "fa-paw", color: "emerald", desc: "اپنے علاقے میں آوارہ یا لاوارث جانوروں کی اطلاع دیں" },
+        { id: "Water Supply", name: "پانی کی فراہمی", icon: "fa-droplet", color: "blue", desc: "لیکیج، کم دباؤ یا آلودگی" },
+        { id: "Waste Management", name: "فضلے کا انتظام", icon: "fa-trash-can", color: "green", desc: "کچرا اٹھانا یا غیر قانونی ڈمپنگ" },
+        { id: "Roads & Infrastructure", name: "سڑکیں اور انفراسٹرکچر", icon: "fa-road", color: "slate", desc: "گڑھے، اسٹریٹ لائٹس یا تعمیرات" },
+        { id: "Public Safety", name: "عوامی تحفظ", icon: "fa-shield-heart", color: "rose", desc: "سیکیورٹی خدشات یا ہنگامی خطرات" },
+        { id: "Natural Gas", name: "قدرتی گیس", icon: "fa-fire-flame-simple", color: "orange", desc: "گیس لیک یا کم پریشر کی رپورٹ" },
+        { id: "Public Relations", name: "عوامی تعلقات", icon: "fa-bullhorn", color: "indigo", desc: "عام پوچھ گچھ، فیڈ بیک اور شہر کی اپ ڈیٹس" },
+        { id: "Emergency Services", name: "ہنگامی خدمات", icon: "fa-truck-medical", color: "red", desc: "فوری امداد اور اہم شہر کے واقعات" }
       ]
     }
   };
@@ -80,12 +80,12 @@ const Dashboard = ({ language, onCategoryClick }) => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
           {content.categories.map((cat, index) => (
             <motion.div
-              key={cat.name}
+              key={cat.id}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
-              onClick={() => onCategoryClick(cat.name)}
+              onClick={() => onCategoryClick(cat.id)}
               className="group cursor-pointer"
             >
               <div className={`h-full p-5 md:p-10 rounded-[1.2rem] md:rounded-[2.5rem] bg-white border border-slate-100 shadow-sm hover:shadow-2xl hover:shadow-emerald-100 transition-all duration-500 relative overflow-hidden border-b-[4px] md:border-b-8 ${

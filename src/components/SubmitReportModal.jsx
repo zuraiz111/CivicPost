@@ -234,26 +234,36 @@ const SubmitReportModal = ({ isOpen, onClose, language, initialCategory = "" }) 
               </div>
             </div>
 
-        {/* Scrollable Form Body */}
         <div className="overflow-y-auto flex-grow no-scrollbar p-5 md:p-10 pt-0">
           <form onSubmit={handleSubmit} id="reportForm" className="space-y-6 md:space-y-10">
             <div className="grid md:grid-cols-2 gap-6 md:gap-10">
               <div>
                 <label className="block text-slate-400 font-black text-[10px] uppercase tracking-[0.2em] mb-4 ml-1">{content.category}</label>
-                <div className="relative group">
-                  <select 
-                    required
-                    className="input-standard appearance-none group-hover:bg-white pr-12"
-                    value={formData.category}
-                    onChange={(e) => setFormData({...formData, category: e.target.value})}
-                    style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 24 24\' stroke=\'%23059669\'%3E%3Cpath stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'3\' d=\'M19 9l-7 7-7-7\' /%3E%3C/svg%3E")', backgroundPosition: 'right 1.5rem center', backgroundRepeat: 'no-repeat', backgroundSize: '1.25em' }}
-                  >
-                    <option value="">{language === 'en' ? "Select Category" : "زمرہ منتخب کریں"}</option>
-                    {categories.map((cat) => (
-                      <option key={cat.id} value={cat.id}>{cat[language]}</option>
-                    ))}
-                  </select>
-                </div>
+                {initialCategory ? (
+                  <div className="input-standard bg-slate-50 border-slate-200 flex items-center justify-between cursor-not-allowed group">
+                    <span className="font-bold text-slate-900">
+                      {categories.find(c => c.id === initialCategory)?.[language] || initialCategory}
+                    </span>
+                    <div className="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center text-xs">
+                      <i className="fas fa-check"></i>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="relative group">
+                    <select 
+                      required
+                      className="input-standard appearance-none group-hover:bg-white pr-12"
+                      value={formData.category}
+                      onChange={(e) => setFormData({...formData, category: e.target.value})}
+                      style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 24 24\' stroke=\'%23059669\'%3E%3Cpath stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'3\' d=\'M19 9l-7 7-7-7\' /%3E%3C/svg%3E")', backgroundPosition: 'right 1.5rem center', backgroundRepeat: 'no-repeat', backgroundSize: '1.25em' }}
+                    >
+                      <option value="">{language === 'en' ? "Select Category" : "زمرہ منتخب کریں"}</option>
+                      {categories.map((cat) => (
+                        <option key={cat.id} value={cat.id}>{cat[language]}</option>
+                      ))}
+                    </select>
+                  </div>
+                )}
               </div>
               <div>
                 <label className="block text-slate-400 font-black text-[10px] uppercase tracking-[0.2em] mb-4 ml-1">{content.priority}</label>

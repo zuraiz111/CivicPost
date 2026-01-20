@@ -77,8 +77,9 @@ const AdminDashboard = ({ language, setLanguage, onSendAlert, onLogout }) => {
       recentActivity: {
         title: "Recent Activity",
         items: [
-          { type: "green", text: "New report received", time: "2 minutes ago" },
-          { type: "blue", text: "Alert dispatched to Sector G-9", time: "1 hour ago" }
+          { type: "green", text: "New report received", time: "2 minutes ago", dept: "Electricity" },
+          { type: "blue", text: "Alert dispatched to Sector G-9", time: "1 hour ago", dept: "Public Safety" },
+          { type: "amber", text: "Staff assigned to task", time: "3 hours ago", dept: "Waste Management" }
         ]
       },
       status: {
@@ -124,8 +125,9 @@ const AdminDashboard = ({ language, setLanguage, onSendAlert, onLogout }) => {
       recentActivity: {
         title: "حالیہ سرگرمی",
         items: [
-          { type: "green", text: "نئی رپورٹ موصول ہوئی", time: "2 منٹ پہلے" },
-          { type: "blue", text: "سیکٹر جی-9 کو الرٹ بھیج دیا گیا", time: "1 گھنٹہ پہلے" }
+          { type: "green", text: "نئی رپورٹ موصول ہوئی", time: "2 منٹ پہلے", dept: "بجلی" },
+          { type: "blue", text: "سیکٹر جی-9 کو الرٹ بھیج دیا گیا", time: "1 گھنٹہ پہلے", dept: "عوامی تحفظ" },
+          { type: "amber", text: "عملہ کام پر لگا دیا گیا", time: "3 گھنٹے پہلے", dept: "فضلے کا انتظام" }
         ]
       },
       status: {
@@ -383,8 +385,15 @@ const AdminDashboard = ({ language, setLanguage, onSendAlert, onLogout }) => {
                     {content.recentActivity.items.map((item, i) => (
                       <div key={i} className="flex gap-3 md:gap-6">
                         <div className={`h-8 md:h-12 w-1 md:w-1.5 rounded-full bg-${item.type}-500 shrink-0`}></div>
-                        <div>
-                          <p className="text-slate-800 font-bold text-xs md:text-base mb-1">{item.text}</p>
+                        <div className="flex-1">
+                          <div className="flex items-center justify-between mb-1">
+                            <p className="text-slate-800 font-bold text-xs md:text-base">{item.text}</p>
+                            {item.dept && (
+                              <span className="text-[6px] md:text-[9px] font-black uppercase px-2 py-0.5 rounded-md bg-slate-100 text-slate-500 border border-slate-200">
+                                {item.dept}
+                              </span>
+                            )}
+                          </div>
                           <p className="text-slate-400 text-[8px] md:text-xs font-bold uppercase tracking-widest">{item.time}</p>
                         </div>
                       </div>
