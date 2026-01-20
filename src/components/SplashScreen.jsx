@@ -42,42 +42,42 @@ const SplashScreen = ({ onFinish }) => {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full opacity-[0.02] pointer-events-none" style={{ backgroundImage: 'radial-gradient(#fff 1px, transparent 1px)', backgroundSize: '60px 60px' }}></div>
       </div>
 
-      <div className="text-center relative z-10 scale-90 md:scale-100 animate-fade-in">
-        <div className="mb-16">
-          <div className="relative inline-block mb-10 group">
-            <div className="absolute inset-0 bg-emerald-500/20 blur-[60px] rounded-full group-hover:bg-emerald-500/40 transition-all duration-700 animate-pulse"></div>
-            <div className="relative w-28 h-28 bg-white/5 backdrop-blur-3xl rounded-[2.5rem] border border-white/10 flex items-center justify-center shadow-2xl animate-float">
-              <i className="fas fa-landmark text-5xl text-emerald-500 drop-shadow-[0_0_15px_rgba(16,185,129,0.5)]"></i>
+      <div className="text-center relative z-10 w-full px-6 md:px-0 scale-90 md:scale-100 animate-fade-in">
+        <div className="mb-10 md:mb-16">
+          <div className="relative inline-block mb-8 md:mb-10 group">
+            <div className="absolute inset-0 bg-emerald-500/20 blur-[40px] md:blur-[60px] rounded-full group-hover:bg-emerald-500/40 transition-all duration-700 animate-pulse"></div>
+            <div className="relative w-20 h-20 md:w-28 md:h-28 bg-white/5 backdrop-blur-3xl rounded-[2rem] md:rounded-[2.5rem] border border-white/10 flex items-center justify-center shadow-2xl animate-float">
+              <i className="fas fa-landmark text-3xl md:text-5xl text-emerald-500 drop-shadow-[0_0_15px_rgba(16,185,129,0.5)]"></i>
             </div>
           </div>
           
-          <h1 className="text-8xl md:text-9xl font-black text-white mb-6 tracking-tighter leading-none">
+          <h1 className="text-5xl sm:text-7xl md:text-9xl font-black text-white mb-4 md:mb-6 tracking-tighter leading-none px-4">
             Civic<span className="text-gradient-accent drop-shadow-[0_0_30px_rgba(16,185,129,0.3)]">Connect</span>
           </h1>
-          <div className="flex items-center justify-center gap-6">
-            <div className="h-[1px] w-12 bg-gradient-to-r from-transparent to-emerald-500/50"></div>
-            <p className="text-slate-400 text-sm font-black tracking-[0.6em] uppercase opacity-60">
+          <div className="flex items-center justify-center gap-3 md:gap-6 px-4">
+            <div className="h-[1px] w-8 md:w-12 bg-gradient-to-r from-transparent to-emerald-500/50"></div>
+            <p className="text-slate-400 text-[10px] md:text-sm font-black tracking-[0.3em] md:tracking-[0.6em] uppercase opacity-60 whitespace-nowrap">
               Future <span className="text-white">Urban</span> OS
             </p>
-            <div className="h-[1px] w-12 bg-gradient-to-l from-transparent to-emerald-500/50"></div>
+            <div className="h-[1px] w-8 md:w-12 bg-gradient-to-l from-transparent to-emerald-500/50"></div>
           </div>
         </div>
         
-        <div className="relative w-80 mx-auto">
-          <div className="h-2 w-full bg-white/5 rounded-full overflow-hidden border border-white/5 shadow-inner p-[1px]">
+        <div className="relative w-full max-w-[280px] md:max-w-80 mx-auto px-4">
+          <div className="h-1.5 md:h-2 w-full bg-white/5 rounded-full overflow-hidden border border-white/5 shadow-inner p-[1px]">
             <div 
               className="h-full bg-gradient-to-r from-emerald-600 via-teal-400 to-emerald-600 bg-[length:200%_100%] animate-shimmer rounded-full transition-all duration-700 ease-out shadow-[0_0_15px_rgba(16,185,129,0.5)]" 
               style={{ width: `${progress}%` }}
             ></div>
           </div>
-          <div className="mt-6 flex justify-between items-center px-2">
-            <div className="flex items-center gap-3">
-              <div className="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></div>
-              <span className="text-[10px] font-black text-emerald-400 uppercase tracking-[0.3em]">
+          <div className="mt-4 md:mt-6 flex justify-between items-center px-1">
+            <div className="flex items-center gap-2 md:gap-3">
+              <div className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-emerald-500 animate-ping"></div>
+              <span className="text-[8px] md:text-[10px] font-black text-emerald-400 uppercase tracking-[0.2em] md:tracking-[0.3em] whitespace-nowrap">
                 {progress < 30 ? 'Synchronizing' : progress < 70 ? 'Encrypted Link' : 'System Ready'}
               </span>
             </div>
-            <span className="text-xs font-black text-slate-500 uppercase tabular-nums tracking-widest">
+            <span className="text-[10px] md:text-xs font-black text-slate-500 uppercase tabular-nums tracking-widest">
               {Math.round(progress)}%
             </span>
           </div>

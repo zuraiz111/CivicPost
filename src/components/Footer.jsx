@@ -53,7 +53,9 @@ const Footer = ({ language, onAdminClick }) => {
       waste: "Waste Management",
       roads: "Roads & Infrastructure",
       safety: "Public Safety",
-      gas: "Natural Gas"
+      gas: "Natural Gas",
+      relations: "Public Relations",
+      emergency: "Emergency Services"
     },
     ur: {
       rights: "© 2024 شہری خدمات۔ تمام جملہ حقوق محفوظ ہیں۔",
@@ -79,7 +81,9 @@ const Footer = ({ language, onAdminClick }) => {
       waste: "فضلے کا انتظام",
       roads: "سڑکیں اور انفراسٹرکچر",
       safety: "عوامی تحفظ",
-      gas: "قدرتی گیس"
+      gas: "قدرتی گیس",
+      relations: "عوامی تعلقات",
+      emergency: "ہنگامی خدمات"
     }
   };
 
@@ -199,7 +203,9 @@ const Footer = ({ language, onAdminClick }) => {
                 { label: content.waste, icon: 'fa-trash-can', color: 'text-emerald-600' },
                 { label: content.roads, icon: 'fa-road', color: 'text-slate-400' },
                 { label: content.safety, icon: 'fa-shield-heart', color: 'text-rose-500' },
-                { label: content.gas, icon: 'fa-fire-flame-simple', color: 'text-orange-500' }
+                { label: content.gas, icon: 'fa-fire-flame-simple', color: 'text-orange-500' },
+                { label: content.relations, icon: 'fa-bullhorn', color: 'text-indigo-500' },
+                { label: content.emergency, icon: 'fa-truck-medical', color: 'text-red-500' }
               ].map((service, i) => (
                 <li key={i}>
                   <button 
