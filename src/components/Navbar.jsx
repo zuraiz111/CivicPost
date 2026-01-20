@@ -153,51 +153,82 @@ const Navbar = ({ language, setLanguage, isAdmin, onAdminClick, onLogout, onRepo
       {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="md:hidden absolute top-full left-6 right-6 mt-4 p-8 glass rounded-[3rem] shadow-2xl z-[80] space-y-6"
-          >
-            <div className="space-y-2">
-              {navLinks.map((link) => (
-                <button
-                  key={link.name}
-                  onClick={() => handleNavigation(link.path)}
-                  className="block w-full px-8 py-4 rounded-2xl text-sm font-black uppercase tracking-widest text-slate-500 hover:text-slate-900 hover:bg-slate-50 transition-all text-left"
-                >
-                  {language === 'ur' ? link.ur : link.name}
-                </button>
-              ))}
-            </div>
+          <div className="md:hidden fixed inset-0 z-[100]">
+            {/* Backdrop */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="absolute inset-0 bg-slate-900/40 backdrop-blur-sm"
+            />
             
-            <div className="pt-6 border-t border-slate-100 space-y-4">
-              <button 
-                onClick={() => { onReportClick(); setIsMobileMenuOpen(false); }}
-                className="w-full btn-premium-accent py-5 flex items-center justify-center gap-3"
-              >
-                <i className="fas fa-plus-circle"></i>
-                {content.report}
-              </button>
+            {/* Menu Content */}
+            <motion.div
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+              className="absolute right-0 top-0 bottom-0 w-[80%] max-w-sm bg-white shadow-2xl p-6 flex flex-col"
+            >
+              <div className="flex items-center justify-between mb-8">
+                <div className="flex items-center gap-2">
+                  <div className="w-10 h-10 rounded-xl bg-[#004d40] text-white flex items-center justify-center">
+                    <i className="fas fa-landmark text-lg"></i>
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-lg font-black text-slate-900 tracking-tighter leading-none uppercase">{content.brand}</span>
+                    <span className="text-[8px] font-black text-emerald-600 tracking-[0.3em] uppercase">{content.brandSub}</span>
+                  </div>
+                </div>
+                <button 
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="w-10 h-10 rounded-xl bg-slate-50 text-slate-900 flex items-center justify-center"
+                >
+                  <i className="fas fa-xmark text-lg"></i>
+                </button>
+              </div>
+
+              <div className="flex-grow overflow-y-auto space-y-2 py-4 no-scrollbar">
+                {navLinks.map((link) => (
+                  <button
+                    key={link.name}
+                    onClick={() => handleNavigation(link.path)}
+                    className="block w-full px-6 py-4 rounded-2xl text-sm font-black uppercase tracking-widest text-slate-500 hover:text-emerald-600 hover:bg-emerald-50 transition-all text-left"
+                  >
+                    {language === 'ur' ? link.ur : link.name}
+                  </button>
+                ))}
+              </div>
               
-              {!isAdmin ? (
+              <div className="pt-6 border-t border-slate-100 space-y-4">
                 <button 
-                  onClick={() => { onAdminClick(); setIsMobileMenuOpen(false); }}
-                  className="w-full btn-premium-outline py-5 flex items-center justify-center gap-3"
+                  onClick={() => { onReportClick(); setIsMobileMenuOpen(false); }}
+                  className="w-full btn-premium-accent py-5 flex items-center justify-center gap-3"
                 >
-                  <i className="fas fa-user-shield"></i>
-                  {content.admin}
+                  <i className="fas fa-plus-circle"></i>
+                  {content.report}
                 </button>
-              ) : (
-                <button 
-                  onClick={() => { onLogout(); setIsMobileMenuOpen(false); }}
-                  className="w-full bg-red-50 text-red-500 py-5 rounded-2xl font-black uppercase tracking-widest text-[11px]"
-                >
-                  {content.logout}
-                </button>
-              )}
-            </div>
-          </motion.div>
+                
+                {!isAdmin ? (
+                  <button 
+                    onClick={() => { onAdminClick(); setIsMobileMenuOpen(false); }}
+                    className="w-full btn-premium-outline py-5 flex items-center justify-center gap-3"
+                  >
+                    <i className="fas fa-user-shield"></i>
+                    {content.admin}
+                  </button>
+                ) : (
+                  <button 
+                    onClick={() => { onLogout(); setIsMobileMenuOpen(false); }}
+                    className="w-full bg-red-50 text-red-500 py-5 rounded-2xl font-black uppercase tracking-widest text-[11px]"
+                  >
+                    {content.logout}
+                  </button>
+                )}
+              </div>
+            </motion.div>
+          </div>
         )}
       </AnimatePresence>
     </nav>

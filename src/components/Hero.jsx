@@ -47,16 +47,16 @@ const Hero = ({ language, onReportClick, onGuidelinesClick }) => {
       </div>
 
       <div className="container mx-auto px-4 md:px-6 max-w-7xl relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          <div className="space-y-8 md:space-y-12">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-20 items-center">
+          <div className="space-y-6 md:space-y-12">
             <motion.div 
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="inline-flex items-center gap-3 px-4 py-2 md:px-5 md:py-2.5 rounded-xl md:rounded-2xl bg-white shadow-premium border border-slate-100/50 backdrop-blur-sm"
+              className="inline-flex items-center gap-2 md:gap-3 px-3 py-1.5 md:px-5 md:py-2.5 rounded-xl md:rounded-2xl bg-white shadow-premium border border-slate-100/50 backdrop-blur-sm"
             >
               <span className="flex h-2 w-2 md:h-2.5 md:w-2.5 rounded-full bg-emerald-600 animate-pulse ring-4 ring-emerald-50" />
-              <span className="text-[9px] md:text-[11px] font-black uppercase tracking-[0.3em] md:tracking-[0.4em] text-slate-500">{content.badge}</span>
+              <span className="text-[8px] md:text-[11px] font-black uppercase tracking-[0.2em] md:tracking-[0.4em] text-slate-500">{content.badge}</span>
             </motion.div>
 
             <motion.div
@@ -64,13 +64,13 @@ const Hero = ({ language, onReportClick, onGuidelinesClick }) => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="space-y-6 md:space-y-8"
+              className="space-y-4 md:space-y-8"
             >
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[5.5rem] font-black text-slate-900 tracking-tighter leading-[0.9] md:leading-[0.85]">
+              <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-[5.5rem] font-black text-slate-900 tracking-tighter leading-[1] md:leading-[0.85]">
                 {content.title}
-                <span className="block text-gradient mt-2 md:mt-4 pb-2">{content.titleAccent}</span>
+                <span className="block text-gradient mt-1 md:mt-4 pb-1 md:pb-2">{content.titleAccent}</span>
               </h1>
-              <p className="text-lg md:text-xl text-slate-500 max-w-lg leading-relaxed font-medium">
+              <p className="text-base md:text-xl text-slate-500 max-w-lg leading-relaxed font-medium">
                 {content.description}
               </p>
             </motion.div>
@@ -104,14 +104,14 @@ const Hero = ({ language, onReportClick, onGuidelinesClick }) => {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.4 }}
-              className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-12 pt-10 md:pt-12 border-t border-slate-200/60"
+              className="grid grid-cols-3 gap-4 sm:gap-12 pt-8 md:pt-12 border-t border-slate-200/60"
             >
               {content.stats.map((stat, i) => (
-                <div key={i} className="group cursor-default flex flex-col items-center sm:items-start">
-                  <div className="text-3xl md:text-4xl font-black text-slate-900 tracking-tighter group-hover:text-emerald-600 transition-colors">
+                <div key={i} className="group cursor-default flex flex-col items-center sm:items-start text-center sm:text-left">
+                  <div className="text-xl sm:text-3xl md:text-4xl font-black text-slate-900 tracking-tighter group-hover:text-emerald-600 transition-colors">
                     {stat.value}
                   </div>
-                  <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-1">
+                  <div className="text-[7px] sm:text-[10px] font-black text-slate-400 uppercase tracking-[0.1em] sm:tracking-widest mt-1">
                     {stat.label}
                   </div>
                 </div>

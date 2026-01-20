@@ -85,12 +85,12 @@ const GuidelinesModal = ({ isOpen, onClose, language }) => {
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            className="bg-white w-full max-w-2xl rounded-[3rem] overflow-hidden shadow-2xl relative z-10 border border-slate-100"
+            className="bg-white w-full max-w-2xl rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl relative z-10 border border-slate-100 max-h-[90dvh] flex flex-col"
           >
             {/* Header */}
-            <div className="bg-[#004d40] p-12 text-center relative overflow-hidden">
-              <div className="absolute top-0 right-0 p-8 opacity-10 rotate-12">
-                <i className="fas fa-book-open text-[10rem] text-white"></i>
+            <div className="bg-[#004d40] p-6 md:p-12 text-center relative overflow-hidden shrink-0">
+              <div className="absolute top-0 right-0 p-4 md:p-8 opacity-10 rotate-12">
+                <i className="fas fa-book-open text-[6rem] md:text-[10rem] text-white"></i>
               </div>
               <motion.div 
                 initial={{ y: 20, opacity: 0 }}
@@ -98,27 +98,27 @@ const GuidelinesModal = ({ isOpen, onClose, language }) => {
                 transition={{ delay: 0.1 }}
                 className="relative z-10"
               >
-                <h2 className="text-4xl font-black text-white tracking-tight mb-3">
+                <h2 className="text-2xl md:text-4xl font-black text-white tracking-tight mb-2 md:mb-3">
                   {content.title}
                 </h2>
-                <p className="text-emerald-300 font-bold uppercase tracking-[0.2em] text-xs">
+                <p className="text-emerald-300 font-bold uppercase tracking-[0.2em] text-[10px] md:text-xs">
                   {content.subtitle}
                 </p>
               </motion.div>
             </div>
 
             {/* Content */}
-            <div className="p-12">
-              <div className="grid md:grid-cols-2 gap-8 mb-12">
+            <div className="p-6 md:p-12 overflow-y-auto no-scrollbar">
+              <div className="grid md:grid-cols-2 gap-6 md:gap-8 mb-8 md:mb-12">
                 {content.steps.map((step, idx) => (
                   <motion.div 
                     key={idx}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.2 + (idx * 0.1) }}
-                    className="flex gap-5 group"
+                    className="flex gap-4 md:gap-5 group"
                   >
-                    <div className={`w-14 h-14 rounded-2xl shrink-0 flex items-center justify-center text-xl transition-all duration-300 group-hover:scale-110 shadow-lg ${
+                    <div className={`w-12 h-12 md:w-14 md:h-14 rounded-xl md:rounded-2xl shrink-0 flex items-center justify-center text-lg md:text-xl transition-all duration-300 group-hover:scale-110 shadow-lg ${
                       step.color === 'blue' ? 'bg-blue-50 text-blue-600 shadow-blue-100' :
                       step.color === 'emerald' ? 'bg-emerald-50 text-emerald-600 shadow-emerald-100' :
                       step.color === 'amber' ? 'bg-amber-50 text-amber-600 shadow-amber-100' :
@@ -127,10 +127,10 @@ const GuidelinesModal = ({ isOpen, onClose, language }) => {
                       <i className={`fas ${step.icon}`}></i>
                     </div>
                     <div>
-                      <h4 className="font-black text-slate-900 mb-1 group-hover:text-emerald-600 transition-colors">
+                      <h4 className="font-black text-slate-900 text-sm md:text-base mb-0.5 md:mb-1 group-hover:text-emerald-600 transition-colors">
                         {step.title}
                       </h4>
-                      <p className="text-sm text-slate-500 font-medium leading-relaxed">
+                      <p className="text-xs md:text-sm text-slate-500 font-medium leading-relaxed">
                         {step.desc}
                       </p>
                     </div>
@@ -143,7 +143,7 @@ const GuidelinesModal = ({ isOpen, onClose, language }) => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6 }}
                 onClick={onClose}
-                className="w-full bg-slate-900 text-white py-5 rounded-2xl font-black uppercase tracking-widest hover:bg-[#004d40] transition-all shadow-xl shadow-slate-200 active:scale-[0.98]"
+                className="w-full bg-slate-900 text-white py-4 md:py-5 rounded-xl md:rounded-2xl font-black uppercase tracking-widest hover:bg-[#004d40] transition-all shadow-xl shadow-slate-200 active:scale-[0.98] text-xs md:text-base"
               >
                 {content.close}
               </motion.button>

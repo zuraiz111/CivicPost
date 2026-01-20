@@ -205,16 +205,16 @@ const AdminDashboard = ({ language, setLanguage, onSendAlert, onLogout }) => {
       <aside className={`fixed lg:sticky top-0 left-0 w-64 md:w-72 bg-[#004d40] h-screen flex flex-col z-[70] shadow-2xl transition-transform duration-300 lg:translate-x-0 ${
         isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
       } shrink-0`}>
-        <div className="p-6 md:p-8 mb-2 md:mb-4 flex items-center justify-between">
+        <div className="p-5 md:p-8 mb-2 md:mb-4 flex items-center justify-between">
           <div>
             <h2 className="text-white font-black text-xl md:text-2xl tracking-tight leading-none">Civic Connect</h2>
-            <p className="text-emerald-400 text-[10px] md:text-xs font-bold uppercase tracking-widest mt-1 md:mt-2 opacity-80">Admin Panel</p>
+            <p className="text-emerald-400 text-[9px] md:text-xs font-bold uppercase tracking-widest mt-1.5 md:mt-2 opacity-80">Admin Panel</p>
           </div>
           <button 
             onClick={() => setIsSidebarOpen(false)}
-            className="lg:hidden text-white/50 hover:text-white"
+            className="lg:hidden w-8 h-8 flex items-center justify-center rounded-lg bg-white/10 text-white/70 hover:text-white"
           >
-            <i className="fas fa-xmark text-lg md:text-xl"></i>
+            <i className="fas fa-xmark text-lg"></i>
           </button>
         </div>
 
@@ -259,33 +259,33 @@ const AdminDashboard = ({ language, setLanguage, onSendAlert, onLogout }) => {
       {/* Main Content Area */}
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
         {/* Top Bar */}
-        <header className="h-20 bg-white border-b border-slate-100 flex items-center justify-between px-4 md:px-10 shrink-0 z-40">
+        <header className="h-16 md:h-20 bg-white border-b border-slate-100 flex items-center justify-between px-4 md:px-10 shrink-0 z-40">
           <div className="flex items-center gap-2 md:gap-4">
             <button 
               onClick={() => setIsSidebarOpen(true)}
-              className="lg:hidden w-10 h-10 rounded-xl bg-slate-50 flex items-center justify-center text-slate-500 hover:bg-slate-100 transition-all"
+              className="lg:hidden w-9 h-9 md:w-10 md:h-10 rounded-xl bg-slate-50 flex items-center justify-center text-slate-500 hover:bg-slate-100 transition-all"
             >
               <i className="fas fa-bars-staggered"></i>
             </button>
-            <h1 className="text-base md:text-xl font-bold text-slate-800 capitalize truncate max-w-[120px] md:max-w-none">{activeView}</h1>
+            <h1 className="text-sm md:text-xl font-bold text-slate-800 capitalize truncate max-w-[100px] md:max-w-none">{activeView}</h1>
           </div>
           
           <div className="flex items-center gap-2 md:gap-6">
             {/* Language Toggle */}
             <button 
               onClick={() => setLanguage(language === 'en' ? 'ur' : 'en')}
-              className="flex items-center gap-2 px-2 md:px-4 py-2 rounded-xl bg-slate-50 border border-slate-100 text-slate-600 hover:text-emerald-600 hover:border-emerald-100 transition-all group"
+              className="flex items-center gap-2 px-3 md:px-4 py-1.5 md:py-2 rounded-xl bg-slate-50 border border-slate-100 text-slate-600 hover:text-emerald-600 hover:border-emerald-100 transition-all group"
             >
-              <i className="fas fa-globe text-xs md:text-sm group-hover:rotate-12 transition-transform"></i>
+              <i className="fas fa-globe text-[10px] md:text-sm group-hover:rotate-12 transition-transform"></i>
               <span className="text-[8px] md:text-[10px] font-black uppercase tracking-widest">
                 {language === 'en' ? 'اردو' : 'English'}
               </span>
             </button>
 
-            <div className="text-right hidden sm:block">
+            <div className="text-right hidden md:block">
               <p className="text-xs md:text-sm font-bold text-slate-500">Welcome, Admin</p>
             </div>
-            <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-emerald-600 flex items-center justify-center text-white text-xs md:text-sm font-black border-2 border-emerald-50 shrink-0">
+            <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-emerald-600 flex items-center justify-center text-white text-[10px] md:text-sm font-black border-2 border-emerald-50 shrink-0">
               A
             </div>
           </div>
@@ -294,42 +294,42 @@ const AdminDashboard = ({ language, setLanguage, onSendAlert, onLogout }) => {
         {/* Scrollable Content */}
         <main className="flex-1 overflow-y-auto p-4 md:p-10 bg-[#f8fafb]">
           {activeView === 'overview' && (
-            <div className="animate-fade-in space-y-8 md:space-y-12">
-              <header className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
+            <div className="animate-fade-in space-y-6 md:space-y-12">
+              <header className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 md:gap-6">
                 <div className="w-full md:w-auto">
-                  <div className="flex items-center gap-3 md:gap-5 text-emerald-600 font-black text-[9px] md:text-[11px] mb-4 md:mb-6 uppercase tracking-[0.3em] md:tracking-[0.5em]">
+                  <div className="flex items-center gap-3 md:gap-5 text-emerald-600 font-black text-[8px] md:text-[11px] mb-3 md:mb-6 uppercase tracking-[0.3em] md:tracking-[0.5em]">
                     <span className="w-8 md:w-14 h-[2px] bg-emerald-600"></span>
                     System Intelligence
                   </div>
-                  <h1 className="text-3xl md:text-6xl font-black text-slate-900 tracking-tighter leading-none mb-4 md:mb-6">
+                  <h1 className="text-2xl md:text-6xl font-black text-slate-900 tracking-tighter leading-tight md:leading-none mb-3 md:mb-6">
                     {content.welcome.split(',')[0]} <span className="text-gradient-accent">{content.welcome.split(',')[1]}</span>
                   </h1>
-                  <p className="text-slate-500 font-medium text-sm md:text-lg max-w-xl">{content.subtitle}</p>
+                  <p className="text-slate-500 font-medium text-xs md:text-lg max-w-xl">{content.subtitle}</p>
                 </div>
               </header>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
                 {content.stats.map((stat, i) => (
-                  <div key={i} className={`glass p-5 md:p-8 rounded-[1.5rem] md:rounded-[2.5rem] border-l-8 ${stat.border} hover:-translate-y-2 transition-all duration-500`}>
+                  <div key={i} className={`glass p-4 md:p-8 rounded-[1.5rem] md:rounded-[2.5rem] border-l-4 md:border-l-8 ${stat.border} hover:-translate-y-1 md:hover:-translate-y-2 transition-all duration-500`}>
                     <div className="flex items-center justify-between mb-3 md:mb-6">
-                      <div className={`w-10 h-10 md:w-16 md:h-16 rounded-xl md:rounded-2xl bg-${stat.color}-50 text-${stat.color}-600 flex items-center justify-center text-lg md:text-2xl shadow-inner`}>
+                      <div className={`w-10 h-10 md:w-16 md:h-16 rounded-xl md:rounded-2xl bg-${stat.color}-50 text-${stat.color}-600 flex items-center justify-center text-base md:text-2xl shadow-inner`}>
                         <i className={`fas ${stat.icon}`}></i>
                       </div>
-                      <span className={`text-[8px] md:text-[10px] font-black text-${stat.color}-600 bg-${stat.color}-50 px-2 md:px-3 py-1 rounded-full`}>{stat.change}</span>
+                      <span className={`text-[7px] md:text-[10px] font-black text-${stat.color}-600 bg-${stat.color}-50 px-2 md:px-3 py-1 rounded-full`}>{stat.change}</span>
                     </div>
-                    <h3 className="text-2xl md:text-5xl font-black text-slate-900 mb-0.5 md:mb-2">{stat.value}</h3>
-                    <p className="text-slate-400 text-[8px] md:text-xs font-black uppercase tracking-widest">{stat.label}</p>
+                    <h3 className="text-xl md:text-5xl font-black text-slate-900 mb-0.5 md:mb-2">{stat.value}</h3>
+                    <p className="text-slate-400 text-[7px] md:text-xs font-black uppercase tracking-widest">{stat.label}</p>
                   </div>
                 ))}
               </div>
 
               {/* Department Categories Grid */}
-              <div className="space-y-4 md:space-y-6">
+              <div className="space-y-3 md:space-y-6">
                 <div className="flex items-center justify-between">
-                  <h3 className="text-base md:text-xl font-bold text-slate-900">Department Categories</h3>
-                  <p className="text-slate-400 text-[8px] md:text-[10px] font-black uppercase tracking-[0.2em] hidden sm:block">Click to view reports</p>
+                  <h3 className="text-sm md:text-xl font-bold text-slate-900">Department Categories</h3>
+                  <p className="text-slate-400 text-[7px] md:text-[10px] font-black uppercase tracking-[0.2em] hidden sm:block">Click to view reports</p>
                 </div>
-                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 xl:grid-cols-9 gap-2 md:gap-4">
+                <div className="grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-5 xl:grid-cols-9 gap-2 md:gap-4">
                   {categories.map((cat, i) => (
                     <button
                       key={i}
@@ -339,14 +339,14 @@ const AdminDashboard = ({ language, setLanguage, onSendAlert, onLogout }) => {
                       }}
                       className={`p-2.5 md:p-6 rounded-[1rem] md:rounded-[2rem] border ${cat.bg} ${cat.border} hover:shadow-xl hover:-translate-y-1 transition-all group text-center flex flex-col items-center gap-1.5 md:gap-4`}
                     >
-                      <div className={`w-7 h-7 md:w-14 md:h-14 rounded-lg md:rounded-2xl bg-white shadow-sm flex items-center justify-center ${cat.color} text-xs md:text-2xl group-hover:scale-110 transition-transform`}>
+                      <div className={`w-7 h-7 md:w-14 md:h-14 rounded-lg md:rounded-2xl bg-white shadow-sm flex items-center justify-center ${cat.color} text-[10px] md:text-2xl group-hover:scale-110 transition-transform`}>
                         <i className={`fas ${cat.icon}`}></i>
                       </div>
                       <div className="space-y-0.5">
-                        <p className="font-black text-[6px] md:text-[10px] uppercase tracking-wider text-slate-800 leading-tight">
+                        <p className="font-black text-[5px] md:text-[10px] uppercase tracking-wider text-slate-800 leading-tight">
                           {cat.name}
                         </p>
-                        <p className="text-[5px] md:text-[9px] font-bold text-slate-400 uppercase tracking-widest">
+                        <p className="text-[4px] md:text-[9px] font-bold text-slate-400 uppercase tracking-widest">
                           {reports.filter(r => r.category === cat.name).length} Reports
                         </p>
                       </div>
@@ -356,9 +356,9 @@ const AdminDashboard = ({ language, setLanguage, onSendAlert, onLogout }) => {
               </div>
 
               <div className="grid lg:grid-cols-3 gap-6 md:gap-10">
-                <div className="lg:col-span-2 space-y-6 md:space-y-8">
+                <div className="lg:col-span-2 space-y-4 md:space-y-8">
                   <div className="flex items-center justify-between">
-                    <h2 className="text-xl md:text-2xl font-black text-slate-900 tracking-tight">{content.quickActions.title}</h2>
+                    <h2 className="text-lg md:text-2xl font-black text-slate-900 tracking-tight">{content.quickActions.title}</h2>
                   </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
                   {content.quickActions.items.map((action, i) => (
@@ -370,22 +370,22 @@ const AdminDashboard = ({ language, setLanguage, onSendAlert, onLogout }) => {
                       <div className="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-slate-900 text-white flex items-center justify-center text-base md:text-xl mb-3 md:mb-6 group-hover:bg-emerald-600 transition-colors">
                         <i className={`fas ${action.icon}`}></i>
                       </div>
-                      <h3 className="text-base md:text-xl font-black text-slate-900 mb-1 md:mb-2">{action.title}</h3>
-                      <p className="text-slate-500 text-[10px] md:text-sm font-medium">{action.desc}</p>
+                      <h3 className="text-sm md:text-xl font-black text-slate-900 mb-1 md:mb-2">{action.title}</h3>
+                      <p className="text-slate-500 text-[9px] md:text-sm font-medium">{action.desc}</p>
                     </button>
                   ))}
                 </div>
                 </div>
 
-                <div className="space-y-6 md:space-y-8">
-                  <h2 className="text-xl md:text-2xl font-black text-slate-900 tracking-tight">{content.recentActivity.title}</h2>
-                  <div className="glass p-6 md:p-8 rounded-[1.5rem] md:rounded-[2.5rem] space-y-6 md:space-y-8 border-white/60">
+                <div className="space-y-4 md:space-y-8">
+                  <h2 className="text-lg md:text-2xl font-black text-slate-900 tracking-tight">{content.recentActivity.title}</h2>
+                  <div className="glass p-5 md:p-8 rounded-[1.5rem] md:rounded-[2.5rem] space-y-4 md:space-y-8 border-white/60">
                     {content.recentActivity.items.map((item, i) => (
-                      <div key={i} className="flex gap-4 md:gap-6">
-                        <div className={`w-2 h-2 md:h-12 w-0.5 md:w-1.5 rounded-full bg-${item.type}-500 shrink-0`}></div>
+                      <div key={i} className="flex gap-3 md:gap-6">
+                        <div className={`h-8 md:h-12 w-1 md:w-1.5 rounded-full bg-${item.type}-500 shrink-0`}></div>
                         <div>
-                          <p className="text-slate-800 font-bold text-sm md:text-base mb-1">{item.text}</p>
-                          <p className="text-slate-400 text-[10px] md:text-xs font-bold uppercase tracking-widest">{item.time}</p>
+                          <p className="text-slate-800 font-bold text-xs md:text-base mb-1">{item.text}</p>
+                          <p className="text-slate-400 text-[8px] md:text-xs font-bold uppercase tracking-widest">{item.time}</p>
                         </div>
                       </div>
                     ))}
@@ -396,20 +396,20 @@ const AdminDashboard = ({ language, setLanguage, onSendAlert, onLogout }) => {
           )}
 
           {activeView === 'reports' && (
-          <div className="animate-fade-in space-y-8 md:space-y-12">
-            <header className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
+          <div className="animate-fade-in space-y-6 md:space-y-12">
+            <header className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 md:gap-6">
               <div className="w-full md:w-auto">
-                <div className="flex items-center gap-3 md:gap-5 text-blue-600 font-black text-[9px] md:text-[11px] mb-4 md:mb-6 uppercase tracking-[0.3em] md:tracking-[0.5em]">
+                <div className="flex items-center gap-3 md:gap-5 text-blue-600 font-black text-[8px] md:text-[11px] mb-3 md:mb-6 uppercase tracking-[0.3em] md:tracking-[0.5em]">
                   <span className="w-8 md:w-14 h-[2px] bg-blue-600"></span>
                   Operations
                 </div>
-                <h1 className="text-3xl md:text-6xl font-black text-slate-900 tracking-tighter leading-none mb-4 md:mb-6">
+                <h1 className="text-2xl md:text-6xl font-black text-slate-900 tracking-tighter leading-tight md:leading-none mb-3 md:mb-6">
                   Service <span className="text-gradient-accent">Log</span>
                 </h1>
                 {selectedCategory !== 'All' && (
                   <button 
                     onClick={() => setSelectedCategory('All')}
-                    className="flex items-center gap-2 text-[8px] md:text-[10px] font-black uppercase tracking-widest text-blue-600 hover:text-blue-700 transition-colors"
+                    className="flex items-center gap-2 text-[7px] md:text-[10px] font-black uppercase tracking-widest text-blue-600 hover:text-blue-700 transition-colors"
                   >
                     <i className="fas fa-times-circle"></i>
                     Filtered by {selectedCategory} • Clear Filter
@@ -422,7 +422,7 @@ const AdminDashboard = ({ language, setLanguage, onSendAlert, onLogout }) => {
                   <select 
                     id="report-category-filter"
                     name="category"
-                    className="w-full px-3 md:px-6 py-2.5 md:py-4 rounded-xl md:rounded-2xl bg-white border border-slate-200 text-[8px] md:text-[10px] font-black uppercase tracking-widest shadow-sm outline-none focus:ring-2 focus:ring-blue-500 appearance-none cursor-pointer"
+                    className="w-full px-4 md:px-6 py-2 md:py-4 rounded-xl md:rounded-2xl bg-white border border-slate-200 text-[8px] md:text-[10px] font-black uppercase tracking-widest shadow-sm outline-none focus:ring-2 focus:ring-blue-500 appearance-none cursor-pointer"
                     value={selectedCategory}
                     onChange={(e) => setSelectedCategory(e.target.value)}
                   >
@@ -439,9 +439,9 @@ const AdminDashboard = ({ language, setLanguage, onSendAlert, onLogout }) => {
 
             <div className="grid gap-4 md:gap-6">
               {filteredReports.map((report) => (
-                <div key={report.id} className="glass p-5 md:p-8 rounded-[1.5rem] md:rounded-[2.5rem] flex flex-col lg:flex-row lg:items-center justify-between border-white/60 group hover:shadow-premium transition-all duration-500 gap-6">
+                <div key={report.id} className="glass p-4 md:p-8 rounded-[1.5rem] md:rounded-[2.5rem] flex flex-col lg:flex-row lg:items-center justify-between border-white/60 group hover:shadow-premium transition-all duration-500 gap-4 md:gap-6">
                   <div className="flex items-start md:items-center gap-4 md:gap-8">
-                    <div className={`w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl flex-shrink-0 flex items-center justify-center text-lg md:text-xl shadow-lg ${
+                    <div className={`w-10 h-10 md:w-16 md:h-16 rounded-xl md:rounded-2xl flex-shrink-0 flex items-center justify-center text-base md:text-xl shadow-lg ${
                       report.status === 'critical' ? 'bg-rose-50 text-rose-600' : 'bg-blue-50 text-blue-600'
                     }`}>
                       <i className={`fas ${
@@ -449,24 +449,24 @@ const AdminDashboard = ({ language, setLanguage, onSendAlert, onLogout }) => {
                       }`}></i>
                     </div>
                     <div className="min-w-0 flex-1">
-                      <div className="flex flex-wrap items-center gap-2 md:gap-4 mb-2">
-                        <span className="text-[8px] md:text-[10px] font-black uppercase text-slate-500 bg-slate-100 px-2 md:px-3 py-0.5 md:py-1 rounded-lg border border-slate-200">
+                      <div className="flex flex-wrap items-center gap-2 md:gap-4 mb-1 md:mb-2">
+                        <span className="text-[7px] md:text-[10px] font-black uppercase text-slate-500 bg-slate-100 px-2 md:px-3 py-0.5 md:py-1 rounded-lg border border-slate-200">
                           {report.id}
                         </span>
-                        <span className="text-slate-400 text-[8px] md:text-[10px] font-bold uppercase tracking-wider truncate">
+                        <span className="text-slate-400 text-[7px] md:text-[10px] font-bold uppercase tracking-wider truncate">
                           <i className="far fa-user mr-1 md:mr-2 text-blue-500"></i> {report.user}
                         </span>
                       </div>
-                      <h3 className="text-lg md:text-xl font-black text-slate-900 mb-1">{report.category}</h3>
-                      <p className="text-slate-500 text-xs md:text-sm font-medium mb-3 line-clamp-2">{report.description}</p>
+                      <h3 className="text-base md:text-xl font-black text-slate-900 mb-0.5 md:mb-1">{report.category}</h3>
+                      <p className="text-slate-500 text-[10px] md:text-sm font-medium mb-2 md:mb-3 line-clamp-2">{report.description}</p>
                       {report.assignedDept && (
                         <div className="flex flex-wrap items-center gap-2 md:gap-3">
-                          <span className="text-[8px] md:text-[9px] font-black uppercase tracking-wider text-emerald-600 bg-emerald-50 px-2 md:px-3 py-0.5 md:py-1 rounded-lg border border-emerald-100 flex items-center gap-1 md:gap-2">
+                          <span className="text-[7px] md:text-[9px] font-black uppercase tracking-wider text-emerald-600 bg-emerald-50 px-2 md:px-3 py-0.5 md:py-1 rounded-lg border border-emerald-100 flex items-center gap-1 md:gap-2">
                             <i className="fas fa-building"></i>
                             {report.assignedDept}
                           </span>
                           {report.assignedStaff && (
-                            <span className="text-[8px] md:text-[9px] font-black uppercase tracking-wider text-blue-600 bg-blue-50 px-2 md:px-3 py-0.5 md:py-1 rounded-lg border border-blue-100 flex items-center gap-1 md:gap-2">
+                            <span className="text-[7px] md:text-[9px] font-black uppercase tracking-wider text-blue-600 bg-blue-50 px-2 md:px-3 py-0.5 md:py-1 rounded-lg border border-blue-100 flex items-center gap-1 md:gap-2">
                               <i className="fas fa-user-check"></i>
                               {staff.find(s => s.id === report.assignedStaff)?.name || 'Assigned'}
                             </span>
@@ -476,20 +476,20 @@ const AdminDashboard = ({ language, setLanguage, onSendAlert, onLogout }) => {
                     </div>
                   </div>
 
-                  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between lg:justify-end gap-4 md:gap-8 border-t lg:border-t-0 border-slate-100 pt-4 lg:pt-0">
-                    <div className="flex items-center justify-between w-full sm:w-auto gap-4">
-                      <span className={`px-3 md:px-5 py-1.5 md:py-2 rounded-lg md:rounded-xl text-[8px] md:text-[9px] font-black uppercase tracking-widest border ${
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between lg:justify-end gap-3 md:gap-8 border-t lg:border-t-0 border-slate-100 pt-3 md:pt-0">
+                    <div className="flex items-center justify-between w-full sm:w-auto gap-3">
+                      <span className={`px-2.5 md:px-5 py-1 md:py-2 rounded-lg md:rounded-xl text-[7px] md:text-[9px] font-black uppercase tracking-widest border ${
                         report.status === 'critical' ? 'bg-rose-500 text-white border-rose-500 shadow-lg shadow-rose-200' : 
                         report.status === 'progress' ? 'bg-amber-500 text-white border-amber-500 shadow-lg shadow-amber-200' : 
                         report.status === 'resolved' ? 'bg-emerald-500 text-white border-emerald-500 shadow-lg shadow-emerald-200' : 'bg-blue-500 text-white border-blue-500 shadow-lg shadow-blue-200'
                       }`}>
                         {report.status}
                       </span>
-                      <div className="flex items-center gap-2 sm:hidden">
+                      <div className="flex items-center gap-1.5 sm:hidden">
                         {report.status !== 'resolved' && (
                           <button 
                             onClick={() => handleAction(report.id, 'approve')}
-                            className={`w-9 h-9 rounded-lg text-white transition-all flex items-center justify-center shadow-lg ${
+                            className={`w-8 h-8 rounded-lg text-white transition-all flex items-center justify-center shadow-lg ${
                               report.status === 'progress' 
                                 ? 'bg-emerald-600 shadow-emerald-200' 
                                 : 'bg-blue-600 shadow-blue-200'
@@ -501,16 +501,16 @@ const AdminDashboard = ({ language, setLanguage, onSendAlert, onLogout }) => {
                         {report.status === 'progress' && (
                           <button 
                             onClick={() => handleAction(report.id, 'resolve')}
-                            className="w-9 h-9 rounded-lg bg-emerald-600 text-white flex items-center justify-center shadow-lg shadow-emerald-200"
+                            className="w-8 h-8 rounded-lg bg-emerald-600 text-white flex items-center justify-center shadow-lg shadow-emerald-200"
                           >
-                            <i className="fas fa-check-double text-xs"></i>
+                            <i className="fas fa-check-double text-[10px]"></i>
                           </button>
                         )}
                         <button 
                           onClick={() => handleAction(report.id, 'delete')}
-                          className="w-9 h-9 rounded-lg bg-white text-rose-500 border border-rose-100 flex items-center justify-center"
+                          className="w-8 h-8 rounded-lg bg-white text-rose-500 border border-rose-100 flex items-center justify-center"
                         >
-                          <i className="fas fa-trash-can text-xs"></i>
+                          <i className="fas fa-trash-can text-[10px]"></i>
                         </button>
                       </div>
                     </div>
@@ -554,28 +554,28 @@ const AdminDashboard = ({ language, setLanguage, onSendAlert, onLogout }) => {
         )}
 
         {activeView === 'alerts' && (
-          <div className="animate-fade-in space-y-8 md:space-y-12">
+          <div className="animate-fade-in space-y-6 md:space-y-12">
             <header>
-              <div className="flex items-center gap-3 md:gap-5 text-rose-600 font-black text-[9px] md:text-[11px] mb-4 md:mb-6 uppercase tracking-[0.3em] md:tracking-[0.5em]">
+              <div className="flex items-center gap-3 md:gap-5 text-rose-600 font-black text-[8px] md:text-[11px] mb-3 md:mb-6 uppercase tracking-[0.3em] md:tracking-[0.5em]">
                 <span className="w-8 md:w-14 h-[2px] bg-rose-600"></span>
                 Emergency Broadcast
               </div>
-              <h1 className="text-3xl md:text-6xl font-black text-slate-900 tracking-tighter leading-none mb-4 md:mb-6">
+              <h1 className="text-2xl md:text-6xl font-black text-slate-900 tracking-tighter leading-tight md:leading-none mb-3 md:mb-6">
                 System <span className="text-rose-600">Alerts</span>
               </h1>
             </header>
 
-            <div className="max-w-2xl glass p-6 md:p-12 rounded-[2rem] md:rounded-[3.5rem] border-rose-100 bg-rose-50/20">
-              <form onSubmit={handleLaunchAlert} className="space-y-6 md:space-y-8">
+            <div className="max-w-2xl glass p-5 md:p-12 rounded-[1.5rem] md:rounded-[3.5rem] border-rose-100 bg-rose-50/20">
+              <form onSubmit={handleLaunchAlert} className="space-y-4 md:space-y-8">
                 <div>
-                  <label className="block text-slate-400 font-black text-[9px] md:text-[10px] uppercase tracking-[0.2em] mb-3 md:mb-4">Target Audience</label>
-                  <div className="flex flex-wrap gap-2 md:gap-4">
+                  <label className="block text-slate-400 font-black text-[8px] md:text-[10px] uppercase tracking-[0.2em] mb-2 md:mb-4">Target Audience</label>
+                  <div className="grid grid-cols-3 gap-2 md:gap-4">
                     {['all', 'staff', 'critical'].map(type => (
                       <button
                         key={type}
                         type="button"
                         onClick={() => setAlertData({...alertData, type})}
-                        className={`flex-1 min-w-[80px] py-3 md:py-4 rounded-xl md:rounded-2xl text-[9px] md:text-[10px] font-black uppercase tracking-widest border transition-all ${
+                        className={`py-2.5 md:py-4 rounded-xl md:rounded-2xl text-[8px] md:text-[10px] font-black uppercase tracking-widest border transition-all ${
                           alertData.type === type ? 'bg-slate-900 text-white border-slate-900 shadow-xl' : 'bg-white text-slate-500 border-slate-100'
                         }`}
                       >
@@ -585,18 +585,18 @@ const AdminDashboard = ({ language, setLanguage, onSendAlert, onLogout }) => {
                   </div>
                 </div>
                 <div>
-                  <label htmlFor="alert-message" className="block text-slate-400 font-black text-[9px] md:text-[10px] uppercase tracking-[0.2em] mb-3 md:mb-4">Broadcast Message</label>
+                  <label htmlFor="alert-message" className="block text-slate-400 font-black text-[8px] md:text-[10px] uppercase tracking-[0.2em] mb-2 md:mb-4">Broadcast Message</label>
                   <textarea 
                     id="alert-message"
                     name="message"
                     required
                     value={alertData.message}
                     onChange={(e) => setAlertData({...alertData, message: e.target.value})}
-                    className="w-full h-40 md:h-48 bg-white rounded-[1.5rem] md:rounded-[2rem] border border-slate-100 p-6 md:p-8 outline-none focus:ring-4 focus:ring-rose-100 transition-all font-medium text-slate-700 text-sm md:text-base"
+                    className="w-full h-32 md:h-48 bg-white rounded-[1.2rem] md:rounded-[2rem] border border-slate-100 p-4 md:p-8 outline-none focus:ring-4 focus:ring-rose-100 transition-all font-medium text-slate-700 text-xs md:text-base"
                     placeholder="Enter the emergency message to be broadcasted to all citizens..."
                   ></textarea>
                 </div>
-                <button type="submit" className="w-full py-4 md:py-6 rounded-xl md:rounded-[2rem] bg-rose-600 text-white font-black uppercase tracking-[0.2em] md:tracking-[0.3em] shadow-2xl shadow-rose-200 hover:bg-rose-700 hover:-translate-y-1 transition-all flex items-center justify-center gap-3 md:gap-4 text-[10px] md:text-base">
+                <button type="submit" className="w-full py-4 md:py-6 rounded-xl md:rounded-[2rem] bg-rose-600 text-white font-black uppercase tracking-[0.2em] md:tracking-[0.3em] shadow-2xl shadow-rose-200 hover:bg-rose-700 hover:-translate-y-1 transition-all flex items-center justify-center gap-2 md:gap-4 text-[9px] md:text-base">
                   <i className="fas fa-tower-broadcast animate-pulse"></i>
                   Launch Protocol
                 </button>
@@ -606,20 +606,20 @@ const AdminDashboard = ({ language, setLanguage, onSendAlert, onLogout }) => {
         )}
 
         {activeView === 'staff' && (
-          <div className="animate-fade-in space-y-8 md:space-y-12">
-            <header className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
+          <div className="animate-fade-in space-y-6 md:space-y-12">
+            <header className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 md:gap-6">
               <div className="w-full md:w-auto">
-                <div className="flex items-center gap-3 md:gap-5 text-emerald-600 font-black text-[9px] md:text-[11px] mb-4 md:mb-6 uppercase tracking-[0.3em] md:tracking-[0.5em]">
+                <div className="flex items-center gap-3 md:gap-5 text-emerald-600 font-black text-[8px] md:text-[11px] mb-3 md:mb-6 uppercase tracking-[0.3em] md:tracking-[0.5em]">
                   <span className="w-8 md:w-14 h-[2px] bg-emerald-600"></span>
                   Human Resources
                 </div>
-                <h1 className="text-3xl md:text-6xl font-black text-slate-900 tracking-tighter leading-none mb-4 md:mb-6">
+                <h1 className="text-2xl md:text-6xl font-black text-slate-900 tracking-tighter leading-tight md:leading-none mb-3 md:mb-6">
                   Staff <span className="text-gradient-accent">Portal</span>
                 </h1>
               </div>
               <button 
                 onClick={() => setActiveModal('add-staff')}
-                className="w-full md:w-auto px-6 md:px-8 py-3 md:py-4 rounded-xl md:rounded-2xl bg-[#004d40] text-white text-[9px] md:text-[10px] font-black uppercase tracking-widest shadow-xl shadow-emerald-200 flex items-center justify-center gap-3 hover:-translate-y-1 transition-all"
+                className="w-full md:w-auto px-6 md:px-8 py-3 md:py-4 rounded-xl md:rounded-2xl bg-[#004d40] text-white text-[8px] md:text-[10px] font-black uppercase tracking-widest shadow-xl shadow-emerald-200 flex items-center justify-center gap-2.5 hover:-translate-y-1 transition-all"
               >
                 <i className="fas fa-user-plus"></i>
                 Add Member
@@ -628,35 +628,35 @@ const AdminDashboard = ({ language, setLanguage, onSendAlert, onLogout }) => {
 
             <div className="grid gap-4 md:gap-6">
               {staff.map((member) => (
-                <div key={member.id} className="glass p-5 md:p-8 rounded-[1.5rem] md:rounded-[2.5rem] flex flex-col lg:flex-row lg:items-center justify-between border-white/60 gap-6">
-                  <div className="flex items-start md:items-center gap-4 md:gap-6">
-                    <div className="w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl bg-emerald-50 text-emerald-600 flex-shrink-0 flex items-center justify-center text-xl md:text-2xl shadow-inner">
+                <div key={member.id} className="glass p-4 md:p-8 rounded-[1.5rem] md:rounded-[2.5rem] flex flex-col lg:flex-row lg:items-center justify-between border-white/60 gap-4 md:gap-6">
+                  <div className="flex items-start md:items-center gap-3 md:gap-6">
+                    <div className="w-10 h-10 md:w-16 md:h-16 rounded-xl md:rounded-2xl bg-emerald-50 text-emerald-600 flex-shrink-0 flex items-center justify-center text-lg md:text-2xl shadow-inner">
                       <i className="fas fa-user-tie"></i>
                     </div>
                     <div className="min-w-0">
-                      <div className="flex flex-wrap items-center gap-2 md:gap-3 mb-1">
-                        <h3 className="text-lg md:text-xl font-black text-slate-900 truncate">{member.name}</h3>
-                        <span className="text-[8px] md:text-[10px] font-black uppercase text-slate-400 bg-slate-100 px-2 py-0.5 rounded-md">{member.id}</span>
+                      <div className="flex flex-wrap items-center gap-1.5 md:gap-3 mb-0.5 md:mb-1">
+                        <h3 className="text-base md:text-xl font-black text-slate-900 truncate">{member.name}</h3>
+                        <span className="text-[7px] md:text-[10px] font-black uppercase text-slate-400 bg-slate-100 px-1.5 py-0.5 rounded-md">{member.id}</span>
                       </div>
-                      <p className="text-slate-500 text-[10px] md:text-sm font-bold uppercase tracking-wider truncate">{member.role} • {member.department}</p>
-                      <p className="text-slate-400 text-[9px] md:text-xs mt-1"><i className="fas fa-phone mr-1 md:mr-2"></i>{member.phone}</p>
+                      <p className="text-slate-500 text-[8px] md:text-sm font-bold uppercase tracking-wider truncate">{member.role} • {member.department}</p>
+                      <p className="text-slate-400 text-[8px] md:text-xs mt-0.5 md:mt-1"><i className="fas fa-phone mr-1 md:mr-2"></i>{member.phone}</p>
                     </div>
                   </div>
-                    <div className="flex flex-wrap items-center gap-2 md:gap-4 border-t lg:border-t-0 border-slate-100 pt-4 lg:pt-0">
+                    <div className="flex items-center gap-2 md:gap-4 border-t lg:border-t-0 border-slate-100 pt-3 md:pt-0">
                     <button 
                       onClick={() => {
                         setAssignmentData({ staffId: member.id, role: member.role, department: member.department });
                         setActiveModal('assign-role');
                       }}
-                      className="flex-1 lg:flex-none px-2.5 md:px-4 py-2 md:py-2 rounded-lg md:rounded-xl bg-blue-50 text-blue-600 border border-blue-100 text-[8px] md:text-[10px] font-black uppercase tracking-widest hover:bg-blue-600 hover:text-white transition-all whitespace-nowrap"
+                      className="flex-1 lg:flex-none px-2.5 md:px-4 py-2 md:py-2 rounded-lg md:rounded-xl bg-blue-50 text-blue-600 border border-blue-100 text-[7px] md:text-[10px] font-black uppercase tracking-widest hover:bg-blue-600 hover:text-white transition-all whitespace-nowrap"
                     >
-                      <i className="fas fa-tasks mr-1.5 md:mr-2"></i>
+                      <i className="fas fa-tasks mr-1 md:mr-2"></i>
                       Assign
                     </button>
                     <select 
                       value={member.status}
                       onChange={(e) => updateStaffStatus(member.id, e.target.value)}
-                      className={`flex-1 lg:flex-none px-2.5 md:px-4 py-2 md:py-2 rounded-lg md:rounded-xl text-[8px] md:text-[10px] font-black uppercase tracking-widest border outline-none transition-all ${
+                      className={`flex-1 lg:flex-none px-2.5 md:px-4 py-2 md:py-2 rounded-lg md:rounded-xl text-[7px] md:text-[10px] font-black uppercase tracking-widest border outline-none transition-all ${
                         member.status === 'active' ? 'bg-emerald-50 text-emerald-600 border-emerald-100' : 'bg-rose-50 text-rose-600 border-rose-100'
                       }`}
                     >
@@ -665,9 +665,9 @@ const AdminDashboard = ({ language, setLanguage, onSendAlert, onLogout }) => {
                     </select>
                     <button 
                       onClick={() => removeStaff(member.id)}
-                      className="w-9 h-9 md:w-10 md:h-10 rounded-lg md:rounded-xl bg-white text-rose-500 border border-rose-100 hover:bg-rose-500 hover:text-white transition-all flex items-center justify-center shrink-0"
+                      className="w-8 h-8 md:w-10 md:h-10 rounded-lg md:rounded-xl bg-white text-rose-500 border border-rose-100 hover:bg-rose-500 hover:text-white transition-all flex items-center justify-center shrink-0"
                     >
-                      <i className="fas fa-trash-can text-sm md:text-base"></i>
+                      <i className="fas fa-trash-can text-xs md:text-base"></i>
                     </button>
                   </div>
                 </div>
@@ -675,15 +675,15 @@ const AdminDashboard = ({ language, setLanguage, onSendAlert, onLogout }) => {
             </div>
 
             {activeModal === 'assign-role' && (
-              <div className="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-slate-900/60 backdrop-blur-sm">
-                <div className="bg-white w-full max-w-md rounded-[3rem] p-10 shadow-2xl animate-modal-up">
-                  <div className="flex items-center gap-4 mb-8">
-                    <div className="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center text-xl">
+              <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-6 bg-slate-900/60 backdrop-blur-sm overflow-y-auto">
+                <div className="bg-white w-full max-w-md rounded-[2rem] md:rounded-[3rem] p-6 md:p-10 shadow-2xl animate-modal-up my-auto max-h-[90dvh] overflow-y-auto no-scrollbar">
+                  <div className="flex items-center gap-4 mb-6 md:mb-8">
+                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl md:rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center text-lg md:text-xl">
                       <i className="fas fa-user-gear"></i>
                     </div>
                     <div>
-                      <h2 className="text-2xl font-black text-slate-900 tracking-tight">Assign Duty</h2>
-                      <p className="text-slate-500 text-xs font-bold uppercase tracking-widest">Update Role & Department</p>
+                      <h2 className="text-xl md:text-2xl font-black text-slate-900 tracking-tight">Assign Duty</h2>
+                      <p className="text-slate-500 text-[10px] md:text-xs font-bold uppercase tracking-widest">Update Role & Department</p>
                     </div>
                   </div>
 
@@ -692,14 +692,14 @@ const AdminDashboard = ({ language, setLanguage, onSendAlert, onLogout }) => {
                     assignStaffRole(assignmentData.staffId, assignmentData.role, assignmentData.department);
                     setActiveModal(null);
                     toast.success("Staff assignment updated successfully.");
-                  }} className="space-y-6">
+                  }} className="space-y-4 md:space-y-6">
                     <div>
-                      <label htmlFor="assign-role" className="block text-slate-400 font-black text-[10px] uppercase tracking-[0.2em] mb-3 ml-2">Assign Role</label>
+                      <label htmlFor="assign-role" className="block text-slate-400 font-black text-[9px] md:text-[10px] uppercase tracking-[0.2em] mb-2 md:mb-3 ml-2">Assign Role</label>
                       <select 
                         id="assign-role"
                         name="role"
                         required
-                        className="w-full px-6 py-4 rounded-2xl bg-slate-50 border border-slate-100 outline-none focus:ring-4 focus:ring-blue-100 transition-all font-bold text-sm appearance-none cursor-pointer"
+                        className="w-full px-4 md:px-6 py-3 md:py-4 rounded-xl md:rounded-2xl bg-slate-50 border border-slate-100 outline-none focus:ring-4 focus:ring-blue-100 transition-all font-bold text-xs md:text-sm appearance-none cursor-pointer"
                         value={assignmentData.role}
                         onChange={(e) => setAssignmentData({...assignmentData, role: e.target.value})}
                       >
@@ -710,12 +710,12 @@ const AdminDashboard = ({ language, setLanguage, onSendAlert, onLogout }) => {
                     </div>
 
                     <div>
-                      <label htmlFor="assign-department" className="block text-slate-400 font-black text-[10px] uppercase tracking-[0.2em] mb-3 ml-2">Assign Department</label>
+                      <label htmlFor="assign-department" className="block text-slate-400 font-black text-[9px] md:text-[10px] uppercase tracking-[0.2em] mb-2 md:mb-3 ml-2">Assign Department</label>
                       <select 
                         id="assign-department"
                         name="department"
                         required
-                        className="w-full px-6 py-4 rounded-2xl bg-slate-50 border border-slate-100 outline-none focus:ring-4 focus:ring-blue-100 transition-all font-bold text-sm appearance-none cursor-pointer"
+                        className="w-full px-4 md:px-6 py-3 md:py-4 rounded-xl md:rounded-2xl bg-slate-50 border border-slate-100 outline-none focus:ring-4 focus:ring-blue-100 transition-all font-bold text-xs md:text-sm appearance-none cursor-pointer"
                         value={assignmentData.department}
                         onChange={(e) => setAssignmentData({...assignmentData, department: e.target.value})}
                       >
@@ -725,54 +725,54 @@ const AdminDashboard = ({ language, setLanguage, onSendAlert, onLogout }) => {
                       </select>
                     </div>
 
-                <div className="flex gap-3 md:gap-4 pt-4 md:pt-6">
-                  <button 
-                    type="button" 
-                    onClick={() => setActiveModal(null)} 
-                    className="flex-1 py-3 md:py-4 rounded-xl md:rounded-2xl bg-slate-100 text-slate-500 font-black uppercase tracking-widest text-[9px] md:text-[10px] hover:bg-slate-200 transition-all"
-                  >
-                    Cancel
-                  </button>
-                  <button 
-                    type="submit" 
-                    className="flex-1 py-3 md:py-4 rounded-xl md:rounded-2xl bg-blue-600 text-white font-black uppercase tracking-widest text-[9px] md:text-[10px] shadow-lg shadow-blue-200 hover:bg-blue-700 transition-all"
-                  >
-                    Confirm Assignment
-                  </button>
-                </div>
+                    <div className="flex gap-3 md:gap-4 pt-4 md:pt-6">
+                      <button 
+                        type="button" 
+                        onClick={() => setActiveModal(null)} 
+                        className="flex-1 py-3 md:py-4 rounded-xl md:rounded-2xl bg-slate-100 text-slate-500 font-black uppercase tracking-widest text-[9px] md:text-[10px] hover:bg-slate-200 transition-all"
+                      >
+                        Cancel
+                      </button>
+                      <button 
+                        type="submit" 
+                        className="flex-1 py-3 md:py-4 rounded-xl md:rounded-2xl bg-blue-600 text-white font-black uppercase tracking-widest text-[9px] md:text-[10px] shadow-lg shadow-blue-200 hover:bg-blue-700 transition-all"
+                      >
+                        Confirm
+                      </button>
+                    </div>
                   </form>
                 </div>
               </div>
             )}
 
             {activeModal === 'add-staff' && (
-              <div className="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-slate-900/60 backdrop-blur-sm">
-                <div className="bg-white w-full max-w-md rounded-[3rem] p-10 shadow-2xl animate-modal-up">
-                  <h2 className="text-3xl font-black text-slate-900 mb-8 tracking-tight">Add New Member</h2>
+              <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-6 bg-slate-900/60 backdrop-blur-sm overflow-y-auto">
+                <div className="bg-white w-full max-w-md rounded-[2rem] md:rounded-[3rem] p-6 md:p-10 shadow-2xl animate-modal-up my-auto max-h-[90dvh] overflow-y-auto no-scrollbar">
+                  <h2 className="text-2xl md:text-3xl font-black text-slate-900 mb-6 md:mb-8 tracking-tight">Add Member</h2>
                   <form onSubmit={(e) => {
                     e.preventDefault();
                     addStaff(newStaff);
                     setNewStaff({ name: '', role: '', department: '', phone: '' });
                     setActiveModal(null);
                     toast.success("New staff member added.");
-                  }} className="space-y-6">
+                  }} className="space-y-4 md:space-y-6">
                     <div>
-                      <label htmlFor="staff-name" className="block text-slate-400 font-black text-[10px] uppercase tracking-[0.2em] mb-2 ml-2">Full Name</label>
+                      <label htmlFor="staff-name" className="block text-slate-400 font-black text-[9px] md:text-[10px] uppercase tracking-[0.2em] mb-2 ml-2">Full Name</label>
                       <input 
                         id="staff-name"
                         name="name"
                         required placeholder="Full Name" 
-                        className="w-full px-6 py-4 rounded-2xl bg-slate-50 border border-slate-100 outline-none focus:ring-4 focus:ring-emerald-100 transition-all font-bold text-sm"
+                        className="w-full px-4 md:px-6 py-3 md:py-4 rounded-xl md:rounded-2xl bg-slate-50 border border-slate-100 outline-none focus:ring-4 focus:ring-emerald-100 transition-all font-bold text-xs md:text-sm"
                         value={newStaff.name} onChange={(e) => setNewStaff({...newStaff, name: e.target.value})}
                       />
                     </div>
                     <div>
-                      <label htmlFor="staff-role" className="block text-slate-400 font-black text-[10px] uppercase tracking-[0.2em] mb-2 ml-2">Select Role</label>
+                      <label htmlFor="staff-role" className="block text-slate-400 font-black text-[9px] md:text-[10px] uppercase tracking-[0.2em] mb-2 ml-2">Select Role</label>
                       <select 
                         id="staff-role"
                         name="role"
                         required
-                        className="w-full px-6 py-4 rounded-2xl bg-slate-50 border border-slate-100 outline-none focus:ring-4 focus:ring-emerald-100 transition-all font-bold text-sm appearance-none cursor-pointer"
+                        className="w-full px-4 md:px-6 py-3 md:py-4 rounded-xl md:rounded-2xl bg-slate-50 border border-slate-100 outline-none focus:ring-4 focus:ring-emerald-100 transition-all font-bold text-xs md:text-sm appearance-none cursor-pointer"
                         value={newStaff.role} onChange={(e) => setNewStaff({...newStaff, role: e.target.value})}
                       >
                         <option value="" disabled>Select Role</option>
@@ -782,12 +782,12 @@ const AdminDashboard = ({ language, setLanguage, onSendAlert, onLogout }) => {
                       </select>
                     </div>
                     <div>
-                      <label htmlFor="staff-department" className="block text-slate-400 font-black text-[10px] uppercase tracking-[0.2em] mb-2 ml-2">Select Department</label>
+                      <label htmlFor="staff-department" className="block text-slate-400 font-black text-[9px] md:text-[10px] uppercase tracking-[0.2em] mb-2 ml-2">Select Department</label>
                       <select 
                         id="staff-department"
                         name="department"
                         required
-                        className="w-full px-6 py-4 rounded-2xl bg-slate-50 border border-slate-100 outline-none focus:ring-4 focus:ring-emerald-100 transition-all font-bold text-sm appearance-none cursor-pointer"
+                        className="w-full px-4 md:px-6 py-3 md:py-4 rounded-xl md:rounded-2xl bg-slate-50 border border-slate-100 outline-none focus:ring-4 focus:ring-emerald-100 transition-all font-bold text-xs md:text-sm appearance-none cursor-pointer"
                         value={newStaff.department} onChange={(e) => setNewStaff({...newStaff, department: e.target.value})}
                       >
                         <option value="" disabled>Select Department</option>
@@ -797,12 +797,12 @@ const AdminDashboard = ({ language, setLanguage, onSendAlert, onLogout }) => {
                       </select>
                     </div>
                     <div>
-                      <label htmlFor="staff-phone" className="block text-slate-400 font-black text-[10px] uppercase tracking-[0.2em] mb-2 ml-2">Phone Number</label>
+                      <label htmlFor="staff-phone" className="block text-slate-400 font-black text-[9px] md:text-[10px] uppercase tracking-[0.2em] mb-2 ml-2">Phone Number</label>
                       <input 
                         id="staff-phone"
                         name="phone"
                         required placeholder="Phone Number" 
-                        className="w-full px-6 py-4 rounded-2xl bg-slate-50 border border-slate-100 outline-none focus:ring-4 focus:ring-emerald-100 transition-all font-bold text-sm"
+                        className="w-full px-4 md:px-6 py-3 md:py-4 rounded-xl md:rounded-2xl bg-slate-50 border border-slate-100 outline-none focus:ring-4 focus:ring-emerald-100 transition-all font-bold text-xs md:text-sm"
                         value={newStaff.phone} onChange={(e) => setNewStaff({...newStaff, phone: e.target.value})}
                       />
                     </div>
@@ -943,7 +943,7 @@ const AdminDashboard = ({ language, setLanguage, onSendAlert, onLogout }) => {
 
         {activeModal === 'assignReport' && (
           <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-6 bg-slate-900/60 backdrop-blur-sm overflow-y-auto">
-            <div className="bg-white w-full max-w-md rounded-[2rem] md:rounded-[3rem] p-6 md:p-10 shadow-2xl animate-modal-up my-auto">
+            <div className="bg-white w-full max-w-md rounded-[2rem] md:rounded-[3rem] p-6 md:p-10 shadow-2xl animate-modal-up my-auto max-h-[90dvh] overflow-y-auto no-scrollbar">
               <div className="flex items-center gap-4 mb-6 md:mb-8">
                 <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl md:rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-lg md:text-xl">
                   <i className="fas fa-clipboard-check"></i>
@@ -1027,7 +1027,7 @@ const AdminDashboard = ({ language, setLanguage, onSendAlert, onLogout }) => {
                     type="submit" 
                     className="flex-1 py-3 md:py-4 rounded-xl md:rounded-2xl bg-emerald-600 text-white font-black uppercase tracking-widest text-[9px] md:text-[10px] shadow-lg shadow-emerald-200 hover:bg-emerald-700 transition-all"
                   >
-                    Assign Work
+                    Confirm
                   </button>
                 </div>
               </form>
@@ -1037,7 +1037,7 @@ const AdminDashboard = ({ language, setLanguage, onSendAlert, onLogout }) => {
 
         {activeModal === 'resolveReport' && (
           <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-6 bg-slate-900/60 backdrop-blur-sm overflow-y-auto">
-            <div className="bg-white w-full max-w-md rounded-[2rem] md:rounded-[3rem] p-6 md:p-10 shadow-2xl animate-modal-up my-auto">
+            <div className="bg-white w-full max-w-md rounded-[2rem] md:rounded-[3rem] p-6 md:p-10 shadow-2xl animate-modal-up my-auto max-h-[90dvh] overflow-y-auto no-scrollbar">
               <div className="flex items-center gap-4 mb-6 md:mb-8">
                 <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl md:rounded-2xl bg-green-50 text-green-600 flex items-center justify-center text-lg md:text-xl">
                   <i className="fas fa-check-circle"></i>
@@ -1087,7 +1087,7 @@ const AdminDashboard = ({ language, setLanguage, onSendAlert, onLogout }) => {
                     type="submit" 
                     className="flex-1 py-3 md:py-4 rounded-xl md:rounded-2xl bg-green-600 text-white font-black uppercase tracking-widest text-[9px] md:text-[10px] shadow-lg shadow-green-200 hover:bg-green-700 transition-all"
                   >
-                    Mark Resolved
+                    Confirm
                   </button>
                 </div>
               </form>

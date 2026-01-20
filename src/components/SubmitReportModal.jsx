@@ -167,46 +167,46 @@ const SubmitReportModal = ({ isOpen, onClose, language, initialCategory = "" }) 
       ></div>
 
       {/* Modal Content */}
-      <div className="relative bg-white rounded-[2rem] md:rounded-[3rem] shadow-2xl w-full max-w-2xl max-h-[95vh] md:max-h-[90vh] flex flex-col overflow-hidden animate-modal-up border-b-8 border-emerald-600 my-4 md:my-auto">
+      <div className="relative bg-white md:rounded-[3rem] shadow-2xl w-full max-w-2xl max-h-[100dvh] md:max-h-[90vh] flex flex-col overflow-hidden animate-modal-up border-b-8 border-emerald-600">
         {showSuccess ? (
-          <div className="p-8 md:p-12 flex flex-col items-center text-center space-y-8 animate-fade-in">
-            <div className="w-24 h-24 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-4xl shadow-lg shadow-emerald-100 ring-8 ring-emerald-50">
+          <div className="p-6 md:p-12 flex flex-col items-center text-center space-y-6 md:space-y-8 animate-fade-in overflow-y-auto no-scrollbar">
+            <div className="w-20 h-20 md:w-24 md:h-24 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-3xl md:text-4xl shadow-lg shadow-emerald-100 ring-8 ring-emerald-50">
               <i className="fas fa-check-circle"></i>
             </div>
             
-            <div className="space-y-3">
-              <h2 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight">{content.success.title}</h2>
-              <p className="text-slate-500 font-medium max-w-sm mx-auto">{content.success.subtitle}</p>
+            <div className="space-y-2 md:space-y-3">
+              <h2 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tight">{content.success.title}</h2>
+              <p className="text-sm md:text-base text-slate-500 font-medium max-w-sm mx-auto">{content.success.subtitle}</p>
             </div>
 
-            <div className="w-full bg-slate-50 rounded-3xl p-6 md:p-8 grid grid-cols-2 gap-6 border border-slate-100">
-              <div className="space-y-1">
-                <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">{content.success.trackingId}</p>
-                <p className="text-xl font-black text-slate-900 tracking-tight">#{submittedReport?.id}</p>
+            <div className="w-full bg-slate-50 rounded-2xl md:rounded-3xl p-4 md:p-8 grid grid-cols-2 gap-4 md:gap-6 border border-slate-100">
+              <div className="space-y-0.5 md:space-y-1">
+                <p className="text-[8px] md:text-[10px] font-black uppercase tracking-widest text-slate-400">{content.success.trackingId}</p>
+                <p className="text-base md:text-xl font-black text-slate-900 tracking-tight">#{submittedReport?.id}</p>
               </div>
-              <div className="space-y-1">
-                <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">{content.success.status}</p>
-                <div className="inline-flex items-center gap-2 px-3 py-1 bg-amber-100 text-amber-700 rounded-full text-[10px] font-black uppercase tracking-wider">
-                  <span className="w-1.5 h-1.5 bg-amber-500 rounded-full animate-pulse"></span>
+              <div className="space-y-0.5 md:space-y-1">
+                <p className="text-[8px] md:text-[10px] font-black uppercase tracking-widest text-slate-400">{content.success.status}</p>
+                <div className="inline-flex items-center gap-1.5 md:gap-2 px-2 md:px-3 py-0.5 md:py-1 bg-amber-100 text-amber-700 rounded-full text-[8px] md:text-[10px] font-black uppercase tracking-wider">
+                  <span className="w-1 md:w-1.5 h-1 md:h-1.5 bg-amber-500 rounded-full animate-pulse"></span>
                   {content.success.pending}
                 </div>
               </div>
-              <div className="space-y-1 col-span-2 pt-4 border-t border-slate-200/60">
-                <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">{content.category}</p>
-                <p className="text-sm font-bold text-slate-700">{submittedReport?.category}</p>
+              <div className="space-y-0.5 md:space-y-1 col-span-2 pt-3 md:pt-4 border-t border-slate-200/60 text-left">
+                <p className="text-[8px] md:text-[10px] font-black uppercase tracking-widest text-slate-400">{content.category}</p>
+                <p className="text-xs md:text-sm font-bold text-slate-700">{submittedReport?.category}</p>
               </div>
             </div>
 
-            <div className="flex items-center gap-3 p-4 bg-emerald-50/50 rounded-2xl border border-emerald-100/50 text-left">
-              <i className="fas fa-info-circle text-emerald-600 mt-1"></i>
-              <p className="text-[11px] font-medium text-emerald-800 leading-relaxed">
+            <div className="flex items-start gap-3 p-3 md:p-4 bg-emerald-50/50 rounded-xl md:rounded-2xl border border-emerald-100/50 text-left">
+              <i className="fas fa-info-circle text-emerald-600 mt-0.5"></i>
+              <p className="text-[10px] md:text-[11px] font-medium text-emerald-800 leading-relaxed">
                 {content.success.note}
               </p>
             </div>
 
             <button 
               onClick={handleClose}
-              className="w-full py-5 rounded-[1.5rem] bg-[#004d40] text-white font-black uppercase tracking-widest shadow-xl shadow-emerald-200/50 hover:scale-[1.02] transition-all active:scale-95"
+              className="w-full py-4 md:py-5 rounded-xl md:rounded-[1.5rem] bg-[#004d40] text-white font-black uppercase tracking-widest shadow-xl shadow-emerald-200/50 hover:scale-[1.02] transition-all active:scale-95"
             >
               {content.success.close}
             </button>
@@ -214,18 +214,18 @@ const SubmitReportModal = ({ isOpen, onClose, language, initialCategory = "" }) 
         ) : (
           <>
             {/* Fixed Header */}
-            <div className="p-6 md:p-10 pb-4 md:pb-6 flex-shrink-0">
+            <div className="p-5 md:p-10 pb-3 md:pb-6 flex-shrink-0">
               <div className="flex justify-between items-center">
                 <div>
-                  <div className="flex items-center gap-2 text-emerald-600 font-black text-[10px] mb-2 uppercase tracking-[0.3em]">
+                  <div className="flex items-center gap-2 text-emerald-600 font-black text-[8px] md:text-[10px] mb-1 md:mb-2 uppercase tracking-[0.2em] md:tracking-[0.3em]">
                     <span className="badge-pulse">
                       <span className="badge-pulse-ping bg-emerald-400"></span>
                       <span className="badge-pulse-dot bg-emerald-600"></span>
                     </span>
                     Civic Connect
                   </div>
-                  <h2 className="text-3xl md:text-5xl font-black tracking-tight text-slate-900">
-                    {content.title.split(' ').map((word, i) => i === 0 ? word : <span key={i} className="text-emerald-600 ml-2">{word}</span>)}
+                  <h2 className="text-2xl md:text-5xl font-black tracking-tight text-slate-900">
+                    {content.title.split(' ').map((word, i) => i === 0 ? word : <span key={i} className="text-emerald-600 ml-1.5 md:ml-2">{word}</span>)}
                   </h2>
                 </div>
                 <button onClick={handleClose} className="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-slate-50 text-slate-400 hover:bg-[#004d40] hover:text-white transition-all duration-300 flex items-center justify-center group active:scale-90 shadow-sm border border-slate-100">
@@ -235,7 +235,7 @@ const SubmitReportModal = ({ isOpen, onClose, language, initialCategory = "" }) 
             </div>
 
         {/* Scrollable Form Body */}
-        <div className="overflow-y-auto flex-grow no-scrollbar p-6 md:p-10 pt-0">
+        <div className="overflow-y-auto flex-grow no-scrollbar p-5 md:p-10 pt-0">
           <form onSubmit={handleSubmit} id="reportForm" className="space-y-6 md:space-y-10">
             <div className="grid md:grid-cols-2 gap-6 md:gap-10">
               <div>

@@ -192,31 +192,31 @@ const About = ({ language }) => {
             <motion.div 
               animate={{ y: [0, -15, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -right-6 lg:-right-16 top-1/4 bg-white p-5 lg:p-6 rounded-3xl shadow-2xl border border-slate-50 z-20 hidden md:block"
+              className="absolute -right-4 lg:-right-16 top-1/4 bg-white p-4 lg:p-6 rounded-2xl lg:rounded-3xl shadow-2xl border border-slate-50 z-20 hidden sm:block"
             >
-              <div className="flex items-center gap-3 lg:gap-4">
-                <div className="w-10 h-10 lg:w-12 lg:h-12 rounded-2xl bg-emerald-500 text-white flex items-center justify-center text-lg lg:text-xl shadow-lg shadow-emerald-200">
+              <div className="flex items-center gap-2 lg:gap-4">
+                <div className="w-8 h-8 lg:w-12 lg:h-12 rounded-xl lg:rounded-2xl bg-emerald-500 text-white flex items-center justify-center text-base lg:text-xl shadow-lg shadow-emerald-200">
                   <i className="fas fa-check-circle"></i>
                 </div>
                 <div>
-                  <p className="text-[10px] lg:text-xs font-black uppercase tracking-widest text-slate-400">Response Rate</p>
-                  <p className="text-lg lg:text-xl font-black text-slate-900">99.8%</p>
+                  <div className="text-[10px] lg:text-lg font-black text-slate-900 leading-tight">{language === 'en' ? 'Verified Service' : 'تصدیق شدہ سروس'}</div>
+                  <div className="text-[6px] lg:text-[10px] font-black text-slate-400 uppercase tracking-widest">{language === 'en' ? 'Community First' : 'کمیونٹی پہلے'}</div>
                 </div>
               </div>
             </motion.div>
 
             <motion.div 
               animate={{ y: [0, 15, 0] }}
-              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -left-6 lg:-left-16 bottom-1/4 bg-white p-5 lg:p-6 rounded-3xl shadow-2xl border border-slate-50 z-20 hidden md:block"
+              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+              className="absolute -left-4 lg:-left-16 bottom-1/4 bg-white p-4 lg:p-6 rounded-2xl lg:rounded-3xl shadow-2xl border border-slate-50 z-20 hidden sm:block"
             >
-              <div className="flex items-center gap-3 lg:gap-4">
-                <div className="w-10 h-10 lg:w-12 lg:h-12 rounded-2xl bg-blue-500 text-white flex items-center justify-center text-lg lg:text-xl shadow-lg shadow-blue-200">
-                  <i className="fas fa-shield-halved"></i>
+              <div className="flex items-center gap-2 lg:gap-4">
+                <div className="w-8 h-8 lg:w-12 lg:h-12 rounded-xl lg:rounded-2xl bg-[#004d40] text-white flex items-center justify-center text-base lg:text-xl shadow-lg shadow-emerald-200">
+                  <i className="fas fa-bolt"></i>
                 </div>
                 <div>
-                  <p className="text-[10px] lg:text-xs font-black uppercase tracking-widest text-slate-400">Security</p>
-                  <p className="text-lg lg:text-xl font-black text-slate-900">Verified</p>
+                  <div className="text-[10px] lg:text-lg font-black text-slate-900 leading-tight">{language === 'en' ? 'Quick Response' : 'فوری جواب'}</div>
+                  <div className="text-[6px] lg:text-[10px] font-black text-slate-400 uppercase tracking-widest">{language === 'en' ? 'Active 24/7' : 'فعال 24/7'}</div>
                 </div>
               </div>
             </motion.div>

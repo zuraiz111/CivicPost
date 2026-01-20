@@ -117,7 +117,7 @@ const Reports = ({ language, isFullPage = false }) => {
                     <i className={`fas text-base md:text-2xl ${catInfo?.icon || 'fa-file-alt'}`}></i>
                   </div>
                   <div className="min-w-0 flex-1">
-                    <div className="flex flex-wrap items-center gap-2 md:gap-4 mb-0.5 md:mb-1.5">
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 mb-1 md:mb-1.5">
                       <span className="text-[7px] md:text-[10px] font-black tracking-[0.15em] uppercase text-slate-400">
                         Case #{report.id}
                       </span>

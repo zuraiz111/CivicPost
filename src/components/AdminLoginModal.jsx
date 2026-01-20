@@ -52,36 +52,36 @@ const AdminLoginModal = ({ isOpen, onClose, onLogin, language }) => {
 
   return (
     <div className="fixed inset-0 z-[100] flex justify-center p-4 md:p-6 bg-[#004d40]/20 backdrop-blur-xl animate-fade-in overflow-y-auto items-start md:items-center">
-      <div className="bg-white w-full max-w-md rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl border-b-8 border-emerald-600 animate-modal-up my-8 md:my-auto">
+      <div className="bg-white w-full max-w-md rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl border-b-8 border-emerald-600 animate-modal-up my-8 md:my-auto max-h-[90dvh] flex flex-col">
         {/* Header Section */}
-        <div className="bg-[#004d40] p-12 text-center relative overflow-hidden">
-          <div className="absolute top-0 right-0 p-6 opacity-10">
-            <i className="fas fa-user-shield text-9xl -rotate-12 text-white"></i>
+        <div className="bg-[#004d40] p-6 md:p-12 text-center relative overflow-hidden shrink-0">
+          <div className="absolute top-0 right-0 p-4 md:p-6 opacity-10">
+            <i className="fas fa-user-shield text-7xl md:text-9xl -rotate-12 text-white"></i>
           </div>
-          <div className="w-20 h-20 bg-emerald-600 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-2xl shadow-emerald-500/40 relative z-10 animate-float">
-            <i className="fas fa-lock text-3xl text-white"></i>
+          <div className="w-12 h-12 md:w-20 md:h-20 bg-emerald-600 rounded-2xl md:rounded-3xl flex items-center justify-center mx-auto mb-4 md:mb-6 shadow-2xl shadow-emerald-500/40 relative z-10 animate-float">
+            <i className="text-xl md:text-3xl text-white fas fa-lock"></i>
           </div>
-          <h2 className="text-4xl font-black text-white tracking-tight relative z-10 mb-3">
+          <h2 className="text-2xl md:text-4xl font-black text-white tracking-tight relative z-10 mb-2 md:mb-3">
             {content.title}
           </h2>
-          <p className="text-emerald-100/60 text-xs font-bold uppercase tracking-widest relative z-10 max-w-[240px] mx-auto leading-relaxed">
+          <p className="text-emerald-100/60 text-[10px] md:text-xs font-bold uppercase tracking-widest relative z-10 max-w-[240px] mx-auto leading-relaxed">
             {content.subtitle}
           </p>
         </div>
 
         {/* Form Section */}
-        <div className="p-12">
-          <form onSubmit={handleSubmit} className="space-y-8">
+        <div className="p-6 md:p-12 overflow-y-auto no-scrollbar">
+          <form onSubmit={handleSubmit} className="space-y-6 md:space-y-8">
             <div>
               <label 
                 htmlFor="admin-username"
-                className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-4 mb-3 block"
+                className="text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-3 md:ml-4 mb-2 md:mb-3 block"
               >
                 {content.username}
               </label>
               <div className="relative group">
-                <div className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-300 group-focus-within:text-emerald-600 transition-colors">
-                  <i className="fas fa-user text-sm"></i>
+                <div className="absolute left-5 md:left-6 top-1/2 -translate-y-1/2 text-slate-300 group-focus-within:text-emerald-600 transition-colors">
+                  <i className="fas fa-user text-xs md:text-sm"></i>
                 </div>
                 <input 
                   id="admin-username"
@@ -90,7 +90,7 @@ const AdminLoginModal = ({ isOpen, onClose, onLogin, language }) => {
                   required
                   value={credentials.username}
                   onChange={(e) => setCredentials({ ...credentials, username: e.target.value })}
-                  className="input-standard pl-14 group-hover:bg-white focus:border-emerald-500"
+                  className="input-standard pl-12 md:pl-14 group-hover:bg-white focus:border-emerald-500 text-sm"
                   placeholder="e.g. admin_user"
                   autoComplete="username"
                 />
@@ -100,13 +100,13 @@ const AdminLoginModal = ({ isOpen, onClose, onLogin, language }) => {
             <div>
               <label 
                 htmlFor="admin-password"
-                className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-4 mb-3 block"
+                className="text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-3 md:ml-4 mb-2 md:mb-3 block"
               >
                 {content.password}
               </label>
               <div className="relative group">
-                <div className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-300 group-focus-within:text-emerald-600 transition-colors">
-                  <i className="fas fa-key text-sm"></i>
+                <div className="absolute left-5 md:left-6 top-1/2 -translate-y-1/2 text-slate-300 group-focus-within:text-emerald-600 transition-colors">
+                  <i className="fas fa-key text-xs md:text-sm"></i>
                 </div>
                 <input 
                   id="admin-password"
@@ -115,7 +115,7 @@ const AdminLoginModal = ({ isOpen, onClose, onLogin, language }) => {
                   required
                   value={credentials.password}
                   onChange={(e) => setCredentials({ ...credentials, password: e.target.value })}
-                  className="input-standard pl-14 group-hover:bg-white focus:border-emerald-500"
+                  className="input-standard pl-12 md:pl-14 group-hover:bg-white focus:border-emerald-500 text-sm"
                   placeholder="••••••••"
                   autoComplete="current-password"
                 />
@@ -123,25 +123,25 @@ const AdminLoginModal = ({ isOpen, onClose, onLogin, language }) => {
             </div>
 
             {error && (
-              <div className="bg-rose-50 border border-rose-100 p-5 rounded-2xl flex items-center gap-4 animate-shake">
-                <div className="w-8 h-8 rounded-lg bg-rose-500 flex items-center justify-center flex-shrink-0 shadow-lg shadow-rose-200">
-                  <i className="fas fa-exclamation-triangle text-white text-xs"></i>
+              <div className="bg-rose-50 border border-rose-100 p-4 md:p-5 rounded-xl md:rounded-2xl flex items-center gap-3 md:gap-4 animate-shake">
+                <div className="w-7 h-7 md:w-8 md:h-8 rounded-lg bg-rose-500 flex items-center justify-center flex-shrink-0 shadow-lg shadow-rose-200">
+                  <i className="fas fa-exclamation-triangle text-white text-[10px] md:text-xs"></i>
                 </div>
-                <span className="text-rose-600 text-xs font-black uppercase tracking-wider">{error}</span>
+                <span className="text-rose-600 text-[10px] md:text-xs font-black uppercase tracking-wider">{error}</span>
               </div>
             )}
 
-            <div className="space-y-4 pt-4">
+            <div className="space-y-3 md:space-y-4 pt-2 md:pt-4">
               <button 
                 type="submit"
                 disabled={isLoading}
-                className="btn-premium-accent w-full flex items-center justify-center gap-4"
+                className="btn-premium-accent w-full flex items-center justify-center gap-3 md:gap-4 text-xs md:text-base py-3 md:py-4"
               >
                 {isLoading ? (
                   <i className="fas fa-circle-notch fa-spin"></i>
                 ) : (
                   <>
-                    <i className="fas fa-sign-in-alt text-xs group-hover:translate-x-1 transition-transform"></i>
+                    <i className="fas fa-sign-in-alt text-[10px] md:text-xs group-hover:translate-x-1 transition-transform"></i>
                     {content.login}
                   </>
                 )}
@@ -150,7 +150,7 @@ const AdminLoginModal = ({ isOpen, onClose, onLogin, language }) => {
               <button 
                 type="button"
                 onClick={onClose}
-                className="btn-premium-outline w-full"
+                className="btn-premium-outline w-full text-xs md:text-base py-3 md:py-4"
               >
                 {content.back}
               </button>
