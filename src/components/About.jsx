@@ -170,7 +170,7 @@ const About = ({ language }) => {
           >
             <div className="relative z-10 rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl shadow-emerald-100/50 aspect-square w-full max-w-[500px] mx-auto border-[6px] md:border-[12px] border-white group bg-slate-100">
               <img 
-                src="https://images.unsplash.com/photo-1573164067507-40e1d7a4b7c5?auto=format&fit=crop&q=80&w=1000" 
+                src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?auto=format&fit=crop&q=80&w=1000" 
                 alt="City Management and Planning" 
                 className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 group-hover:scale-110 transition-all duration-[2s]"
                 crossOrigin="anonymous"

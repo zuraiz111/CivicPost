@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { sendFeedbackEmail } from '../utils/emailService';
+import toast from 'react-hot-toast';
 
 const Footer = ({ language, onAdminClick }) => {
   const navigate = useNavigate();
@@ -95,11 +96,14 @@ const Footer = ({ language, onAdminClick }) => {
       
       setIsSubmitted(true);
       setFeedbackData({ name: '', email: '', message: '' });
+      toast.success(language === 'en' ? "Feedback sent successfully!" : "تاثرات کامیابی کے ساتھ بھیجے گئے!");
     } catch (error) {
       console.error("Feedback submission failed:", error);
-      // Even if email fails, we'll show success to the user for better UX
-      setIsSubmitted(true);
-      setFeedbackData({ name: '', email: '', message: '' });
+      if (error.text?.includes('Public Key is invalid')) {
+        toast.error(language === 'en' ? "Email configuration error. Please check Public Key." : "ای میل کنفیگریشن کی خرابی۔ براہ کرم پبلک کی چیک کریں۔");
+      } else {
+        toast.error(language === 'en' ? "Failed to send feedback. Please try again later." : "تاثرات بھیجنے میں ناکامی۔ براہ کرم بعد میں دوبارہ کوشش کریں۔");
+      }
     } finally {
       setIsSubmitting(false);
     }

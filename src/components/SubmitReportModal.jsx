@@ -13,6 +13,8 @@ const SubmitReportModal = ({ isOpen, onClose, language, initialCategory = "" }) 
   });
   const [imagePreview, setImagePreview] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [submittedReport, setSubmittedReport] = useState(null);
 
   const categories = [
     { id: "Electricity", en: "Electricity", ur: "بجلی" },
@@ -44,6 +46,15 @@ const SubmitReportModal = ({ isOpen, onClose, language, initialCategory = "" }) 
         low: "Low",
         normal: "Normal",
         urgent: "Urgent"
+      },
+      success: {
+        title: "Report Received!",
+        subtitle: "Your report has been successfully logged into our system.",
+        trackingId: "Tracking ID",
+        status: "Initial Status",
+        pending: "Pending Verification",
+        close: "Close & Return",
+        note: "Our team will review your report and assign it to the relevant department within 2 hours."
       }
     },
     ur: {
@@ -63,6 +74,15 @@ const SubmitReportModal = ({ isOpen, onClose, language, initialCategory = "" }) 
         low: "کم",
         normal: "نارمل",
         urgent: "فوری"
+      },
+      success: {
+        title: "رپورٹ موصول ہو گئی!",
+        subtitle: "آپ کی رپورٹ کامیابی کے ساتھ ہمارے سسٹم میں درج کر لی گئی ہے۔",
+        trackingId: "ٹریکنگ آئی ڈی",
+        status: "ابتدائی حیثیت",
+        pending: "تصدیق کے منتظر",
+        close: "بند کریں اور واپس جائیں",
+        note: "ہماری ٹیم آپ کی رپورٹ کا جائزہ لے گی اور اسے 2 گھنٹے کے اندر متعلقہ محکمے کو تفویض کر دے گی۔"
       }
     }
   };
@@ -84,6 +104,19 @@ const SubmitReportModal = ({ isOpen, onClose, language, initialCategory = "" }) 
     setImagePreview(null);
   };
 
+  const handleClose = () => {
+    setShowSuccess(false);
+    setSubmittedReport(null);
+    setFormData({
+      category: initialCategory,
+      description: "",
+      location: "",
+      priority: "normal"
+    });
+    setImagePreview(null);
+    onClose();
+  };
+
   if (!isOpen) return null;
 
   const handleSubmit = async (e) => {
@@ -101,11 +134,14 @@ const SubmitReportModal = ({ isOpen, onClose, language, initialCategory = "" }) 
       };
 
       addReport(newReport);
+      setSubmittedReport({ ...newReport, id: Math.random().toString(36).substr(2, 9).toUpperCase() });
+      setShowSuccess(true);
 
       // Attempt to send email, but don't block the UI if it fails
       sendReportEmail(newReport).catch(err => console.error("Email send failed:", err));
 
-      toast.success(language === 'en' ? "Report submitted successfully!" : "رپورٹ کامیابی کے ساتھ جمع کر دی گئی ہے!", {
+      toast.success(language === 'en' ? "Report logged!" : "رپورٹ درج کر لی گئی ہے!", {
+        duration: 2000,
         style: {
           borderRadius: '20px',
           background: '#004d40',
@@ -113,12 +149,8 @@ const SubmitReportModal = ({ isOpen, onClose, language, initialCategory = "" }) 
           padding: '16px 24px',
           fontSize: '14px',
           fontWeight: '900',
-          textTransform: 'uppercase',
-          letterSpacing: '0.1em'
         }
       });
-      
-      onClose();
     } catch {
       toast.error(language === 'en' ? "Failed to submit report" : "رپورٹ جمع کرانے میں ناکامی");
     } finally {
@@ -131,31 +163,76 @@ const SubmitReportModal = ({ isOpen, onClose, language, initialCategory = "" }) 
       {/* Backdrop */}
       <div 
         className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm transition-opacity"
-        onClick={onClose}
+        onClick={handleClose}
       ></div>
 
       {/* Modal Content */}
       <div className="relative bg-white rounded-[2rem] md:rounded-[3rem] shadow-2xl w-full max-w-2xl max-h-[95vh] md:max-h-[90vh] flex flex-col overflow-hidden animate-modal-up border-b-8 border-emerald-600 my-4 md:my-auto">
-        {/* Fixed Header */}
-        <div className="p-6 md:p-10 pb-4 md:pb-6 flex-shrink-0">
-          <div className="flex justify-between items-center">
-            <div>
-              <div className="flex items-center gap-2 text-emerald-600 font-black text-[10px] mb-2 uppercase tracking-[0.3em]">
-                <span className="badge-pulse">
-                  <span className="badge-pulse-ping bg-emerald-400"></span>
-                  <span className="badge-pulse-dot bg-emerald-600"></span>
-                </span>
-                Civic Connect
-              </div>
-              <h2 className="text-3xl md:text-5xl font-black tracking-tight text-slate-900">
-                {content.title.split(' ').map((word, i) => i === 0 ? word : <span key={i} className="text-emerald-600 ml-2">{word}</span>)}
-              </h2>
+        {showSuccess ? (
+          <div className="p-8 md:p-12 flex flex-col items-center text-center space-y-8 animate-fade-in">
+            <div className="w-24 h-24 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-4xl shadow-lg shadow-emerald-100 ring-8 ring-emerald-50">
+              <i className="fas fa-check-circle"></i>
             </div>
-            <button onClick={onClose} className="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-slate-50 text-slate-400 hover:bg-[#004d40] hover:text-white transition-all duration-300 flex items-center justify-center group active:scale-90 shadow-sm border border-slate-100">
-              <i className="fas fa-times text-lg md:text-xl group-hover:rotate-90 transition-transform"></i>
+            
+            <div className="space-y-3">
+              <h2 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight">{content.success.title}</h2>
+              <p className="text-slate-500 font-medium max-w-sm mx-auto">{content.success.subtitle}</p>
+            </div>
+
+            <div className="w-full bg-slate-50 rounded-3xl p-6 md:p-8 grid grid-cols-2 gap-6 border border-slate-100">
+              <div className="space-y-1">
+                <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">{content.success.trackingId}</p>
+                <p className="text-xl font-black text-slate-900 tracking-tight">#{submittedReport?.id}</p>
+              </div>
+              <div className="space-y-1">
+                <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">{content.success.status}</p>
+                <div className="inline-flex items-center gap-2 px-3 py-1 bg-amber-100 text-amber-700 rounded-full text-[10px] font-black uppercase tracking-wider">
+                  <span className="w-1.5 h-1.5 bg-amber-500 rounded-full animate-pulse"></span>
+                  {content.success.pending}
+                </div>
+              </div>
+              <div className="space-y-1 col-span-2 pt-4 border-t border-slate-200/60">
+                <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">{content.category}</p>
+                <p className="text-sm font-bold text-slate-700">{submittedReport?.category}</p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-3 p-4 bg-emerald-50/50 rounded-2xl border border-emerald-100/50 text-left">
+              <i className="fas fa-info-circle text-emerald-600 mt-1"></i>
+              <p className="text-[11px] font-medium text-emerald-800 leading-relaxed">
+                {content.success.note}
+              </p>
+            </div>
+
+            <button 
+              onClick={handleClose}
+              className="w-full py-5 rounded-[1.5rem] bg-[#004d40] text-white font-black uppercase tracking-widest shadow-xl shadow-emerald-200/50 hover:scale-[1.02] transition-all active:scale-95"
+            >
+              {content.success.close}
             </button>
           </div>
-        </div>
+        ) : (
+          <>
+            {/* Fixed Header */}
+            <div className="p-6 md:p-10 pb-4 md:pb-6 flex-shrink-0">
+              <div className="flex justify-between items-center">
+                <div>
+                  <div className="flex items-center gap-2 text-emerald-600 font-black text-[10px] mb-2 uppercase tracking-[0.3em]">
+                    <span className="badge-pulse">
+                      <span className="badge-pulse-ping bg-emerald-400"></span>
+                      <span className="badge-pulse-dot bg-emerald-600"></span>
+                    </span>
+                    Civic Connect
+                  </div>
+                  <h2 className="text-3xl md:text-5xl font-black tracking-tight text-slate-900">
+                    {content.title.split(' ').map((word, i) => i === 0 ? word : <span key={i} className="text-emerald-600 ml-2">{word}</span>)}
+                  </h2>
+                </div>
+                <button onClick={handleClose} className="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-slate-50 text-slate-400 hover:bg-[#004d40] hover:text-white transition-all duration-300 flex items-center justify-center group active:scale-90 shadow-sm border border-slate-100">
+                  <i className="fas fa-times text-lg md:text-xl group-hover:rotate-90 transition-transform"></i>
+                </button>
+              </div>
+            </div>
 
         {/* Scrollable Form Body */}
         <div className="overflow-y-auto flex-grow no-scrollbar p-6 md:p-10 pt-0">
@@ -278,12 +355,14 @@ const SubmitReportModal = ({ isOpen, onClose, language, initialCategory = "" }) 
           </button>
           <button 
             type="button" 
-            onClick={onClose}
+            onClick={handleClose}
             className="flex-1 px-8 py-4 md:py-6 rounded-2xl md:rounded-3xl border-2 border-slate-100 text-slate-400 font-black uppercase tracking-widest text-[10px] md:text-xs hover:bg-slate-50 transition-all"
           >
             {content.cancel}
           </button>
         </div>
+          </>
+        )}
       </div>
     </div>
   );
