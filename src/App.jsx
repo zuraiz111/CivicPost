@@ -178,54 +178,54 @@ const AppLayout = ({
 
       {/* Public Chat/Feedback Widget */}
       {!isAdminPage && (
-        <div className="fixed bottom-10 right-10 z-[200]">
+        <div className="fixed bottom-4 right-4 md:bottom-10 md:right-10 z-[200]">
           {isChatOpen ? (
-            <div className="bg-white w-[400px] h-[600px] rounded-[3rem] shadow-2xl border border-slate-100 flex flex-col overflow-hidden animate-modal-up">
-              <div className="bg-[#004d40] p-8 flex items-center justify-between">
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center backdrop-blur-sm">
-                    <i className="fas fa-headset text-white text-xl"></i>
+            <div className="bg-white w-[calc(100vw-2rem)] h-[calc(100vh-8rem)] md:w-[400px] md:h-[600px] rounded-[2rem] md:rounded-[3rem] shadow-2xl border border-slate-100 flex flex-col overflow-hidden animate-modal-up">
+              <div className="bg-[#004d40] p-6 md:p-8 flex items-center justify-between shrink-0">
+                <div className="flex items-center gap-3 md:gap-4">
+                  <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl md:rounded-2xl bg-white/10 flex items-center justify-center backdrop-blur-sm">
+                    <i className="fas fa-headset text-white text-lg md:text-xl"></i>
                   </div>
                   <div>
-                    <h3 className="text-white font-black tracking-tight">Support Chat</h3>
-                    <p className="text-emerald-300 text-[10px] font-black uppercase tracking-widest">Always Online</p>
+                    <h3 className="text-white text-sm md:text-base font-black tracking-tight">Support Chat</h3>
+                    <p className="text-emerald-300 text-[8px] md:text-[10px] font-black uppercase tracking-widest">Always Online</p>
                   </div>
                 </div>
-                <button onClick={() => setIsChatOpen(false)} className="w-10 h-10 rounded-full bg-white/10 text-white flex items-center justify-center hover:bg-white/20 transition-all">
-                  <i className="fas fa-times"></i>
+                <button onClick={() => setIsChatOpen(false)} className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-white/10 text-white flex items-center justify-center hover:bg-white/20 transition-all">
+                  <i className="fas fa-times text-sm md:text-base"></i>
                 </button>
               </div>
-              <div className="flex-1 overflow-y-auto p-8 space-y-6 bg-slate-50/50">
+              <div className="flex-1 overflow-y-auto p-6 md:p-8 space-y-4 md:space-y-6 bg-slate-50/50">
                 {messages.map((msg) => (
                   <div key={msg.id} className={`flex ${msg.isAdmin ? 'justify-start' : 'justify-end'}`}>
-                    <div className={`max-w-[80%] p-5 rounded-[1.5rem] ${
+                    <div className={`max-w-[85%] md:max-w-[80%] p-4 md:p-5 rounded-[1.2rem] md:rounded-[1.5rem] ${
                       msg.isAdmin 
                         ? 'bg-white text-slate-800 rounded-tl-none border border-slate-100 shadow-sm' 
                         : 'bg-[#004d40] text-white rounded-tr-none shadow-lg shadow-emerald-100'
                     }`}>
-                      <p className="text-sm font-medium leading-relaxed">{msg.text}</p>
-                      <p className={`text-[8px] mt-2 font-bold uppercase tracking-widest ${msg.isAdmin ? 'text-slate-400' : 'text-emerald-300'}`}>
+                      <p className="text-xs md:text-sm font-medium leading-relaxed">{msg.text}</p>
+                      <p className={`text-[7px] md:text-[8px] mt-2 font-bold uppercase tracking-widest ${msg.isAdmin ? 'text-slate-400' : 'text-emerald-300'}`}>
                         {msg.time}
                       </p>
                     </div>
                   </div>
                 ))}
               </div>
-              <div className="p-6 bg-white border-t border-slate-50">
+              <div className="p-4 md:p-6 bg-white border-t border-slate-50 shrink-0">
                 <form onSubmit={(e) => {
                   e.preventDefault();
                   const input = e.target.elements.msg;
                   if (!input.value.trim()) return;
                   sendMessage({ sender: 'Citizen', text: input.value, isAdmin: false });
                   input.value = '';
-                }} className="flex gap-3">
+                }} className="flex gap-2 md:gap-3">
                   <input 
                     name="msg"
                     placeholder="Ask us anything..."
-                    className="flex-1 px-6 py-4 rounded-2xl bg-slate-50 border border-slate-100 outline-none focus:ring-4 focus:ring-emerald-100 transition-all font-medium text-sm"
+                    className="flex-1 px-4 md:px-6 py-3 md:py-4 rounded-xl md:rounded-2xl bg-slate-50 border border-slate-100 outline-none focus:ring-4 focus:ring-emerald-100 transition-all font-medium text-xs md:text-sm"
                   />
-                  <button type="submit" className="w-14 h-14 rounded-2xl bg-[#004d40] text-white flex items-center justify-center shadow-lg shadow-emerald-200">
-                    <i className="fas fa-paper-plane"></i>
+                  <button type="submit" className="w-12 h-12 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-[#004d40] text-white flex items-center justify-center shadow-lg shadow-emerald-200 shrink-0">
+                    <i className="fas fa-paper-plane text-sm md:text-base"></i>
                   </button>
                 </form>
               </div>
@@ -233,10 +233,10 @@ const AppLayout = ({
           ) : (
             <button 
               onClick={() => setIsChatOpen(true)}
-              className="w-20 h-20 rounded-[2.5rem] bg-[#004d40] text-white shadow-2xl shadow-emerald-200 flex items-center justify-center hover:scale-110 hover:-rotate-12 transition-all group relative"
+              className="w-16 h-16 md:w-20 md:h-20 rounded-[1.8rem] md:rounded-[2.5rem] bg-[#004d40] text-white shadow-2xl shadow-emerald-200 flex items-center justify-center hover:scale-110 hover:-rotate-12 transition-all group relative"
             >
-              <i className="fas fa-comment-dots text-3xl group-hover:scale-110 transition-transform"></i>
-              <span className="absolute -top-2 -right-2 w-8 h-8 bg-rose-500 rounded-full border-4 border-white text-[10px] font-black flex items-center justify-center animate-bounce">
+              <i className="fas fa-comment-dots text-2xl md:text-3xl group-hover:scale-110 transition-transform"></i>
+              <span className="absolute -top-1 -right-1 md:-top-2 md:-right-2 w-6 h-6 md:w-8 md:h-8 bg-rose-500 rounded-full border-2 md:border-4 border-white text-[8px] md:text-[10px] font-black flex items-center justify-center animate-bounce">
                 1
               </span>
             </button>
