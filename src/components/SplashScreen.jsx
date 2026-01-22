@@ -42,16 +42,16 @@ const SplashScreen = ({ onFinish }) => {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full opacity-[0.02] pointer-events-none" style={{ backgroundImage: 'radial-gradient(#fff 1px, transparent 1px)', backgroundSize: '60px 60px' }}></div>
       </div>
 
-      <div className="text-center relative z-10 w-full px-6 md:px-0 scale-90 md:scale-100 animate-fade-in">
-        <div className="mb-10 md:mb-16">
-          <div className="relative inline-block mb-8 md:mb-10 group">
+      <div className="text-center relative z-10 w-full px-4 md:px-0 scale-[0.85] sm:scale-90 md:scale-100 animate-fade-in">
+        <div className="mb-8 md:mb-16">
+          <div className="relative inline-block mb-6 md:mb-10 group">
             <div className="absolute inset-0 bg-emerald-500/20 blur-[40px] md:blur-[60px] rounded-full group-hover:bg-emerald-500/40 transition-all duration-700 animate-pulse"></div>
-            <div className="relative w-20 h-20 md:w-28 md:h-28 bg-white/5 backdrop-blur-3xl rounded-[2rem] md:rounded-[2.5rem] border border-white/10 flex items-center justify-center shadow-2xl animate-float">
-              <i className="fas fa-landmark text-3xl md:text-5xl text-emerald-500 drop-shadow-[0_0_15px_rgba(16,185,129,0.5)]"></i>
+            <div className="relative w-16 h-16 md:w-28 md:h-28 bg-white/5 backdrop-blur-3xl rounded-[1.5rem] md:rounded-[2.5rem] border border-white/10 flex items-center justify-center shadow-2xl animate-float">
+              <i className="fas fa-landmark text-2xl md:text-5xl text-emerald-500 drop-shadow-[0_0_15px_rgba(16,185,129,0.5)]"></i>
             </div>
           </div>
           
-          <h1 className="text-5xl sm:text-7xl md:text-9xl font-black text-white mb-4 md:mb-6 tracking-tighter leading-none px-4">
+          <h1 className="text-4xl sm:text-6xl md:text-9xl font-black text-white mb-4 md:mb-6 tracking-tighter leading-none px-2">
             Civic<span className="text-gradient-accent drop-shadow-[0_0_30px_rgba(16,185,129,0.3)]">Connect</span>
           </h1>
           <div className="flex items-center justify-center gap-3 md:gap-6 px-4">

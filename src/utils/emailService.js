@@ -1,14 +1,14 @@
 import emailjs from '@emailjs/browser';
 
-// Configuration - Replace these with your actual EmailJS credentials
+
 const EMAILJS_CONFIG = {
-  SERVICE_ID: 'service_5qmc0im', // Updated with your Service ID
+  SERVICE_ID: 'service_5qmc0im', 
   TEMPLATE_ID_REPORT: 'template_tw83mue', // Updated with your Template ID
   TEMPLATE_ID_ASSIGN: 'template_tw83mue', // Using the provided template ID for assignment as well
   TEMPLATE_ID_RESOLVE: 'template_tw83mue', // Using the provided template ID for resolution as well
   TEMPLATE_ID_FEEDBACK: 'template_tw83mue', // Using the provided template ID for feedback as well
   TEMPLATE_ID_NEWSLETTER: 'template_tw83mue', // Using the provided template ID for newsletter as well
-  PUBLIC_KEY: 'QjQvitdTRA0vbrpNe', // REPLACE THIS with your EmailJS Public Key from https://dashboard.emailjs.com/admin/account
+  PUBLIC_KEY: 'QjQvitdTRA0vbrpNe', 
 };
 
 /**

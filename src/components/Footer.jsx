@@ -236,7 +236,10 @@ const Footer = ({ language, onAdminClick }) => {
                 </p>
                 <form onSubmit={handleFeedback} className="flex flex-col gap-4">
                   <div className="relative">
+                    <label htmlFor="feedback-name" className="sr-only">{content.namePlaceholder}</label>
                     <input 
+                      id="feedback-name"
+                      name="name"
                       type="text" 
                       value={feedbackData.name}
                       onChange={(e) => setFeedbackData({...feedbackData, name: e.target.value})}
@@ -245,7 +248,10 @@ const Footer = ({ language, onAdminClick }) => {
                     />
                   </div>
                   <div className="relative">
+                    <label htmlFor="feedback-email" className="sr-only">{content.emailPlaceholder}</label>
                     <input 
+                      id="feedback-email"
+                      name="email"
                       type="email" 
                       required
                       value={feedbackData.email}
@@ -255,7 +261,10 @@ const Footer = ({ language, onAdminClick }) => {
                     />
                   </div>
                   <div className="relative">
+                    <label htmlFor="feedback-message" className="sr-only">{content.messagePlaceholder}</label>
                     <textarea 
+                      id="feedback-message"
+                      name="message"
                       required
                       value={feedbackData.message}
                       onChange={(e) => setFeedbackData({...feedbackData, message: e.target.value})}

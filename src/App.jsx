@@ -178,10 +178,10 @@ const AppLayout = ({
 
       {/* Public Chat/Feedback Widget */}
       {!isAdminPage && (
-        <div className="fixed bottom-4 right-4 md:bottom-10 md:right-10 z-[200]">
+        <div className="fixed bottom-4 right-4 md:bottom-10 md:right-10 z-[200] flex flex-col items-end">
           {isChatOpen ? (
-            <div className="bg-white w-[calc(100vw-2rem)] h-[calc(100vh-8rem)] md:w-[400px] md:h-[600px] rounded-[2rem] md:rounded-[3rem] shadow-2xl border border-slate-100 flex flex-col overflow-hidden animate-modal-up">
-              <div className="bg-[#004d40] p-6 md:p-8 flex items-center justify-between shrink-0">
+            <div className="bg-white w-[calc(100vw-2rem)] h-[70vh] sm:h-[600px] md:w-[400px] md:h-[600px] rounded-[2rem] md:rounded-[3rem] shadow-2xl border border-slate-100 flex flex-col overflow-hidden animate-modal-up mb-4">
+              <div className="bg-[#004d40] p-5 md:p-8 flex items-center justify-between shrink-0">
                 <div className="flex items-center gap-3 md:gap-4">
                   <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl md:rounded-2xl bg-white/10 flex items-center justify-center backdrop-blur-sm">
                     <i className="fas fa-headset text-white text-lg md:text-xl"></i>
@@ -195,7 +195,7 @@ const AppLayout = ({
                   <i className="fas fa-times text-sm md:text-base"></i>
                 </button>
               </div>
-              <div className="flex-1 overflow-y-auto p-6 md:p-8 space-y-4 md:space-y-6 bg-slate-50/50">
+              <div className="flex-1 overflow-y-auto p-5 md:p-8 space-y-4 md:space-y-6 bg-slate-50/50">
                 {messages.map((msg) => (
                   <div key={msg.id} className={`flex ${msg.isAdmin ? 'justify-start' : 'justify-end'}`}>
                     <div className={`max-w-[85%] md:max-w-[80%] p-4 md:p-5 rounded-[1.2rem] md:rounded-[1.5rem] ${
@@ -219,28 +219,31 @@ const AppLayout = ({
                   sendMessage({ sender: 'Citizen', text: input.value, isAdmin: false });
                   input.value = '';
                 }} className="flex gap-2 md:gap-3">
+                  <label htmlFor="chat-msg" className="sr-only">Ask us anything...</label>
                   <input 
+                    id="chat-msg"
                     name="msg"
                     placeholder="Ask us anything..."
                     className="flex-1 px-4 md:px-6 py-3 md:py-4 rounded-xl md:rounded-2xl bg-slate-50 border border-slate-100 outline-none focus:ring-4 focus:ring-emerald-100 transition-all font-medium text-xs md:text-sm"
                   />
-                  <button type="submit" className="w-12 h-12 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-[#004d40] text-white flex items-center justify-center shadow-lg shadow-emerald-200 shrink-0">
+                  <button type="submit" aria-label="Send message" className="w-12 h-12 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-[#004d40] text-white flex items-center justify-center shadow-lg shadow-emerald-200 shrink-0">
                     <i className="fas fa-paper-plane text-sm md:text-base"></i>
                   </button>
                 </form>
               </div>
             </div>
-          ) : (
-            <button 
-              onClick={() => setIsChatOpen(true)}
-              className="w-16 h-16 md:w-20 md:h-20 rounded-[1.8rem] md:rounded-[2.5rem] bg-[#004d40] text-white shadow-2xl shadow-emerald-200 flex items-center justify-center hover:scale-110 hover:-rotate-12 transition-all group relative"
-            >
-              <i className="fas fa-comment-dots text-2xl md:text-3xl group-hover:scale-110 transition-transform"></i>
+          ) : null}
+          <button 
+            onClick={() => setIsChatOpen(!isChatOpen)}
+            className="w-14 h-14 md:w-20 md:h-20 rounded-[1.5rem] md:rounded-[2.5rem] bg-[#004d40] text-white shadow-2xl shadow-emerald-200 flex items-center justify-center hover:scale-110 hover:-rotate-12 transition-all group relative"
+          >
+            <i className={`fas ${isChatOpen ? 'fa-times' : 'fa-comment-dots'} text-xl md:text-3xl group-hover:scale-110 transition-transform`}></i>
+            {!isChatOpen && (
               <span className="absolute -top-1 -right-1 md:-top-2 md:-right-2 w-6 h-6 md:w-8 md:h-8 bg-rose-500 rounded-full border-2 md:border-4 border-white text-[8px] md:text-[10px] font-black flex items-center justify-center animate-bounce">
                 1
               </span>
-            </button>
-          )}
+            )}
+          </button>
         </div>
       )}
     </div>

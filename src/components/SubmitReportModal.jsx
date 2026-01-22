@@ -238,9 +238,9 @@ const SubmitReportModal = ({ isOpen, onClose, language, initialCategory = "" }) 
           <form onSubmit={handleSubmit} id="reportForm" className="space-y-6 md:space-y-10">
             <div className="grid md:grid-cols-2 gap-6 md:gap-10">
               <div>
-                <label className="block text-slate-400 font-black text-[10px] uppercase tracking-[0.2em] mb-4 ml-1">{content.category}</label>
+                <label htmlFor="report-category" className="block text-slate-400 font-black text-[10px] uppercase tracking-[0.2em] mb-4 ml-1">{content.category}</label>
                 {initialCategory ? (
-                  <div className="input-standard bg-slate-50 border-slate-200 flex items-center justify-between cursor-not-allowed group">
+                  <div id="report-category" className="input-standard bg-slate-50 border-slate-200 flex items-center justify-between cursor-not-allowed group">
                     <span className="font-bold text-slate-900">
                       {categories.find(c => c.id === initialCategory)?.[language] || initialCategory}
                     </span>
@@ -251,6 +251,8 @@ const SubmitReportModal = ({ isOpen, onClose, language, initialCategory = "" }) 
                 ) : (
                   <div className="relative group">
                     <select 
+                      id="report-category"
+                      name="category"
                       required
                       className="input-standard appearance-none group-hover:bg-white pr-12"
                       value={formData.category}
@@ -267,7 +269,7 @@ const SubmitReportModal = ({ isOpen, onClose, language, initialCategory = "" }) 
               </div>
               <div>
                 <label className="block text-slate-400 font-black text-[10px] uppercase tracking-[0.2em] mb-4 ml-1">{content.priority}</label>
-                <div className="flex gap-2 p-2 bg-slate-50 rounded-2xl border border-slate-200 group hover:bg-white transition-all duration-300">
+                <div role="group" aria-label={content.priority} className="flex gap-2 p-2 bg-slate-50 rounded-2xl border border-slate-200 group hover:bg-white transition-all duration-300">
                   {Object.entries(content.priorities).map(([key, label]) => (
                     <button
                       key={key}
@@ -287,10 +289,12 @@ const SubmitReportModal = ({ isOpen, onClose, language, initialCategory = "" }) 
             </div>
 
             <div>
-              <label className="block text-slate-400 font-black text-[10px] uppercase tracking-[0.2em] mb-4 ml-1">{content.location}</label>
+              <label htmlFor="report-location" className="block text-slate-400 font-black text-[10px] uppercase tracking-[0.2em] mb-4 ml-1">{content.location}</label>
               <div className="relative group">
                 <i className="fas fa-location-dot absolute left-6 top-1/2 -translate-y-1/2 text-slate-300 group-focus-within:text-emerald-600 transition-colors"></i>
                 <input 
+                  id="report-location"
+                  name="location"
                   required
                   type="text" 
                   placeholder={content.placeholderLoc}
@@ -302,8 +306,10 @@ const SubmitReportModal = ({ isOpen, onClose, language, initialCategory = "" }) 
             </div>
 
             <div>
-              <label className="block text-slate-400 font-black text-[10px] uppercase tracking-[0.2em] mb-4 ml-1">{content.description}</label>
+              <label htmlFor="report-description" className="block text-slate-400 font-black text-[10px] uppercase tracking-[0.2em] mb-4 ml-1">{content.description}</label>
               <textarea 
+                id="report-description"
+                name="description"
                 required
                 rows="4"
                 placeholder={content.placeholderDesc}
@@ -314,24 +320,24 @@ const SubmitReportModal = ({ isOpen, onClose, language, initialCategory = "" }) 
             </div>
 
             <div>
-              <label className="block text-slate-400 font-black text-[10px] uppercase tracking-[0.2em] mb-4 ml-1">{content.uploadImage}</label>
+              <label htmlFor="report-image" className="block text-slate-400 font-black text-[10px] uppercase tracking-[0.2em] mb-4 ml-1">{content.uploadImage}</label>
               <div className="flex items-start gap-4">
                 {!imagePreview ? (
-                  <label className="flex-1 flex flex-col items-center justify-center border-2 border-dashed border-slate-200 rounded-[2rem] md:rounded-[3rem] p-8 md:p-16 hover:border-emerald-400 hover:bg-emerald-50/20 transition-all cursor-pointer group bg-slate-50">
+                  <label htmlFor="report-image" className="flex-1 flex flex-col items-center justify-center border-2 border-dashed border-slate-200 rounded-[2rem] md:rounded-[3rem] p-8 md:p-16 hover:border-emerald-400 hover:bg-emerald-50/20 transition-all cursor-pointer group bg-slate-50">
                     <div className="w-14 h-14 md:w-20 md:h-20 rounded-2xl md:rounded-3xl bg-white shadow-sm flex items-center justify-center text-slate-300 group-hover:scale-110 group-hover:text-emerald-600 group-hover:rotate-6 mb-4 md:mb-6 transition-all duration-500 border border-slate-100">
                       <i className="fas fa-cloud-arrow-up text-2xl md:text-3xl"></i>
                     </div>
                     <span className="text-slate-900 font-black text-xs md:text-sm uppercase tracking-[0.2em]">{content.uploadImage}</span>
                     <span className="text-slate-400 text-[9px] md:text-[10px] mt-2 md:mt-3 font-black uppercase tracking-widest">PNG, JPG up to 10MB</span>
-                    <input type="file" className="hidden" accept="image/*" onChange={handleImageChange} />
+                    <input id="report-image" name="image" type="file" className="hidden" accept="image/*" onChange={handleImageChange} />
                   </label>
                 ) : (
                   <div className="relative w-full group">
                     <img src={imagePreview} alt="Preview" className="w-full h-48 md:h-72 object-cover rounded-[2rem] md:rounded-[3rem] border-4 border-white shadow-premium transition-all duration-700 group-hover:scale-[1.02]" />
                     <div className="absolute inset-0 bg-slate-900/60 opacity-0 group-hover:opacity-100 transition-opacity rounded-[2rem] md:rounded-[3rem] flex items-center justify-center gap-4 md:gap-6 backdrop-blur-sm">
-                      <label className="w-16 h-16 bg-white rounded-2xl text-emerald-600 hover:bg-emerald-600 hover:text-white shadow-2xl cursor-pointer transition-all duration-300 flex items-center justify-center active:scale-90">
+                    <label htmlFor="report-image-change" className="w-16 h-16 bg-white rounded-2xl text-emerald-600 hover:bg-emerald-600 hover:text-white shadow-2xl cursor-pointer transition-all duration-300 flex items-center justify-center active:scale-90">
                         <i className="fas fa-rotate text-xl"></i>
-                        <input type="file" className="hidden" accept="image/*" onChange={handleImageChange} />
+                        <input id="report-image-change" name="image" type="file" className="hidden" accept="image/*" onChange={handleImageChange} />
                       </label>
                       <button 
                         type="button"
