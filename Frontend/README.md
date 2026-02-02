@@ -1,77 +1,43 @@
-# CivicPost - Smart City Governance Portal 🏙️
+# CivicPost - Frontend
 
-A modern, high-tech governance and response system for citizens to report, track, and resolve local infrastructure issues. This platform bridges the gap between citizens and municipal authorities through a transparent, efficient, and bilingual digital interface.
+This is the user interface for the **CivicPost** application, built to be modern, responsive, and easy to use for citizens and administrators.
 
-## 🚀 Features
-
-### **Citizen Portal**
-- **Dynamic Splash Screen**: Professional entrance with real-time loading progress and glassmorphism aesthetic.
-- **Instant Reporting**: Streamlined submission system for various categories (Electricity, Water, Waste, etc.) with urgency levels.
-- **Multilingual Support**: Fully localized interface in **English** and **Urdu** to ensure accessibility for all citizens.
-- **Public Transparency**: Real-time dashboard showing community reports, status updates, and resolution progress.
-- **Interactive Guidelines**: Built-in help system to guide users through the reporting process.
-
-### **Admin Portal (Management Suite)**
-- **Centralized Dashboard**: Comprehensive overview of city-wide statistics, active reports, and recent activities.
-- **Staff Management**: Full HR suite to register, authorize, and assign roles/departments to field personnel.
-- **Report Lifecycle Control**: Manage reports from submission to resolution—approve, assign, or reject with visual feedback.
-- **Emergency Broadcast**: Global alert system to notify citizens of urgent infrastructure or safety issues instantly.
-- **Citizen Feedback**: Integrated communication channel to view and respond to citizen inquiries.
-- **Data Analytics**: Visual data representation using Recharts for better decision-making.
-
-## 🛠️ Tech Stack
-
-- **Frontend**: [React 19](https://react.dev/)
-- **State Management**: [Zustand](https://zustand-demo.pmnd.rs/) (Lightweight, scalable state)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/) (Glassmorphism & Custom Animations)
-- **Animations**: [Framer Motion](https://www.framer.com/motion/)
-- **Charts**: [Recharts](https://recharts.org/) (Interactive data visualization)
-- **Routing**: [React Router 7](https://reactrouter.com/)
-- **Icons**: [Lucide React](https://lucide.dev/) & FontAwesome 6
-- **Notifications**: [React Hot Toast](https://react-hot-toast.com/)
+## 🚀 Technologies Used
+- **React**: A library for building component-based user interfaces.
+- **Vite**: A fast build tool and development server.
+- **Tailwind CSS**: A utility-first CSS framework for styling.
+- **Zustand**: A lightweight state management library.
+- **Axios**: For making HTTP requests to the backend.
+- **Framer Motion**: For smooth animations.
+- **Lucide React**: For beautiful iconography.
 
 ## 📂 Project Structure
+- `src/components/`: Reusable UI components (Navbar, Hero, Dashboard, Modals).
+- `src/store/`: State management logic using Zustand (`useStore.js`).
+- `src/utils/`: Utility functions like email services.
+- `App.jsx`: Main application component and routing logic.
+- `main.jsx`: Entry point for React.
 
-```text
-src/
-├── components/      # Reusable UI components (Modals, Hero, Dashboard, etc.)
-├── store/           # Zustand state management
-├── App.jsx          # Main application routing and layout
-├── main.jsx         # Application entry point
-└── index.css        # Global styles and Tailwind directives
-```
+## 🔗 How it Works (For Viva)
 
-## 📦 Getting Started
+### 1. State Management (Zustand)
+The app uses a central store (`src/store/useStore.js`) to manage data. Instead of passing data manually between components, any component can access the `reports` or `staff` data directly from the store.
 
-### **Prerequisites**
-- Node.js (Latest LTS version)
-- npm or yarn
+### 2. Backend Connection
+The frontend connects to the backend API via **Axios**.
+- In `useStore.js`, we define `API_URL = 'http://localhost:5000/api'`.
+- Functions like `fetchReports()` make a `GET` request to `${API_URL}/reports` and save the result into the state.
 
-### **Installation**
-1. Clone the repository:
-   ```bash
-   git clone <repository-url>
-   ```
-2. Navigate to the project directory:
-   ```bash
-   cd CivicPost
-   ```
-3. Install dependencies:
-   ```bash
-   npm install
-   ```
+### 3. Responsive Design
+The UI is built with **Tailwind CSS**, making it fully responsive. We use a grid system for the dashboard and flexbox for the layout.
 
-### **Running the Application**
-Start the development server:
-```bash
-npm run dev
-```
-Open [http://localhost:5173](http://localhost:5173) in your browser.
+### 4. Interactive Features
+- **Submit Report**: Opens a modal where citizens can fill in details.
+- **Admin Dashboard**: Allows authorized staff to change report statuses (Pending → In Progress → Resolved).
+- **Real-time feel**: After adding or updating a report, the UI updates instantly without a full page refresh.
 
-## � Admin Access
-To access the management suite, click the **Admin Board** button and use:
-- **Username**: `admin`
-- **Password**: `admin123`
-
----
-Built with ❤️ for smarter, more connected communities.
+## 🛠️ How to Run
+1. Navigate to the frontend folder: `cd Frontend`
+2. Install dependencies: `npm install`
+3. Start the app: `npm run dev`
+4. Open the link provided (usually `http://localhost:5173`)

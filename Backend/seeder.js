@@ -37,20 +37,29 @@ const messages = [
 
 const importData = async () => {
   try {
+    console.log('Starting data import...');
     await Report.deleteMany();
+    console.log('Reports deleted');
     await Staff.deleteMany();
+    console.log('Staff deleted');
     await Citizen.deleteMany();
+    console.log('Citizens deleted');
     await Message.deleteMany();
+    console.log('Messages deleted');
 
     await Report.insertMany(reports);
+    console.log('Reports inserted');
     await Staff.insertMany(staff);
+    console.log('Staff inserted');
     await Citizen.insertMany(citizens);
+    console.log('Citizens inserted');
     await Message.insertMany(messages);
+    console.log('Messages inserted');
 
-    console.log('Data Imported!');
+    console.log('Data Imported Successfully!');
     process.exit();
   } catch (error) {
-    console.error(`${error}`);
+    console.error(`Error during import: ${error}`);
     process.exit(1);
   }
 };
