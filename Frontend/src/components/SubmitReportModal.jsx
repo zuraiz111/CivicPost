@@ -129,30 +129,35 @@ const SubmitReportModal = ({ isOpen, onClose, language, initialCategory = "" }) 
         description: formData.description,
         location: formData.location,
         urgency: formData.priority.charAt(0).toUpperCase() + formData.priority.slice(1),
-        user: "Guest User",
-        date: new Date().toISOString().split('T')[0]
+        user: "Guest User"
       };
 
-      addReport(newReport);
-      setSubmittedReport({ ...newReport, id: Math.random().toString(36).substr(2, 9).toUpperCase() });
-      setShowSuccess(true);
+      const result = await addReport(newReport);
+      
+      if (result) {
+        setSubmittedReport(result);
+        setShowSuccess(true);
 
-      // Attempt to send email, but don't block the UI if it fails
-      sendReportEmail(newReport).catch(err => console.error("Email send failed:", err));
+        // Attempt to send email, but don't block the UI if it fails
+        sendReportEmail(result).catch(err => console.error("Email send failed:", err));
 
-      toast.success(language === 'en' ? "Report logged!" : "رپورٹ درج کر لی گئی ہے!", {
-        duration: 2000,
-        style: {
-          borderRadius: '20px',
-          background: '#004d40',
-          color: '#fff',
-          padding: '16px 24px',
-          fontSize: '14px',
-          fontWeight: '900',
-        }
-      });
-    } catch {
-      toast.error(language === 'en' ? "Failed to submit report" : "رپورٹ جمع کرانے میں ناکامی");
+        toast.success(language === 'en' ? "Report logged!" : "رپورٹ درج کر لی گئی ہے!", {
+          duration: 2000,
+          style: {
+            borderRadius: '20px',
+            background: '#004d40',
+            color: '#fff',
+            padding: '16px 24px',
+            fontSize: '14px',
+            fontWeight: '900',
+          }
+        });
+      } else {
+        throw new Error("Failed to store report in database");
+      }
+    } catch (error) {
+      console.error("Submission error:", error);
+      toast.error(language === 'en' ? "Failed to submit report. Please try again." : "رپورٹ جمع کرانے میں ناکامی۔ براہ کرم دوبارہ کوشش کریں۔");
     } finally {
       setIsSubmitting(false);
     }
@@ -182,7 +187,7 @@ const SubmitReportModal = ({ isOpen, onClose, language, initialCategory = "" }) 
             <div className="w-full bg-slate-50 rounded-2xl md:rounded-3xl p-4 md:p-8 grid grid-cols-2 gap-4 md:gap-6 border border-slate-100">
               <div className="space-y-0.5 md:space-y-1">
                 <p className="text-[8px] md:text-[10px] font-black uppercase tracking-widest text-slate-400">{content.success.trackingId}</p>
-                <p className="text-base md:text-xl font-black text-slate-900 tracking-tight">#{submittedReport?.id}</p>
+                <p className="text-base md:text-xl font-black text-slate-900 tracking-tight">{submittedReport?.trackingId || submittedReport?.id}</p>
               </div>
               <div className="space-y-0.5 md:space-y-1">
                 <p className="text-[8px] md:text-[10px] font-black uppercase tracking-widest text-slate-400">{content.success.status}</p>
